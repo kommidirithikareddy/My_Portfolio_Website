@@ -1,0 +1,111 @@
+/* ===============================
+   Global Styles
+================================ */
+
+:root {
+  --accent: #ffb400;
+  --dark: #0b1a2b;
+}
+
+
+body {
+  font-family: Inter, system-ui, -apple-system, "Segoe UI",
+               Roboto, "Helvetica Neue", Arial, sans-serif;
+  color: #222;
+  background-color: #ffffff;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===============================
+   Home Section
+================================ */
+
+.home {
+  padding: 3.5rem 0;
+  background: linear-gradient(120deg, rgba(11,26,43,0.03), transparent);
+}
+
+
+/* ===============================
+   Avatar
+================================ */
+.avatar {
+  width: 380px;
+  height: 380px;
+  object-fit: cover;
+  border: 10px solid var(--accent);
+}
+
+
+/* ===============================
+   Social Icons
+================================ */
+
+.social a {
+  color: #111;
+  margin-right: 12px;
+  transition: transform 0.2s ease, color 0.2s ease;
+}
+
+.social a:hover {
+  transform: translateY(-4px);
+  color: var(--accent);
+}
+
+
+/* ===============================
+   Cards
+================================ */
+
+.card {
+  border: none;
+  border-radius: 14px;
+  box-shadow: 0 8px 30px rgba(11, 26, 43, 0.08);
+}
+
+
+/* Sticky card (About page sidebar) */
+.sticky-card {
+  position: sticky;
+  top: 90px;
+}
+
+
+
+
+/* ===============================
+   Reveal Animations
+================================ */
+
+.reveal {
+  /*opacity: 0; */
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+.reveal.visible {
+  /*opacity: 1; */
+  transform: translateY(0);
+}
+
+
+/* ===============================
+   Timeline / Lists
+================================ */
+
+.timeline-item {
+  margin-bottom: 1.5rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px dashed rgba(0,0,0,0.08);
+}
+
+/* ===============================
+   Footer
+================================ */
+
+footer {
+  background: transparent;
+  color: #666;
+  font-size: 0.9rem;
+}
+
