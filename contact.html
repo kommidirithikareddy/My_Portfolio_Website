@@ -8,6 +8,75 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.ico">
+  <style>
+    .contact-hero {
+      background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
+      border-radius: 16px;
+      padding: 40px;
+      margin-bottom: 40px;
+    }
+    .contact-info-item {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      padding: 14px 0;
+      border-bottom: 1px solid #f0f0f0;
+      text-decoration: none;
+      color: inherit;
+      transition: all 0.2s;
+    }
+    .contact-info-item:last-child { border-bottom: none; }
+    .contact-info-item:hover { transform: translateX(4px); color: #0d6efd; }
+    .contact-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1.1rem;
+    }
+    .status-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #d1fae5;
+      color: #065f46;
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .status-dot {
+      width: 8px;
+      height: 8px;
+      background: #10b981;
+      border-radius: 50%;
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50% { opacity: 0.6; transform: scale(1.3); }
+    }
+    .form-control:focus {
+      border-color: #0d6efd;
+      box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
+    }
+    .btn-send {
+      background: linear-gradient(135deg, #0d6efd, #0056d3);
+      border: none;
+      padding: 12px;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: all 0.3s;
+    }
+    .btn-send:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.35);
+    }
+  </style>
 </head>
 <body>
 
@@ -32,73 +101,72 @@
 
   <main class="container py-5">
 
-    <h2 class="fw-bold reveal">Get in Touch</h2>
-    <p class="text-muted mb-5 reveal">
-      I'm open to full-time roles, internships, and collaborations.
-      Feel free to reach out — I'd love to connect!
-    </p>
+    <!-- Hero Banner -->
+    <div class="contact-hero reveal">
+      <div class="status-badge">
+        <div class="status-dot"></div>
+        Available for opportunities
+      </div>
+      <h2 class="fw-bold mb-2">Let's Work Together</h2>
+      <p class="text-muted mb-0" style="max-width: 520px; font-size: 1.05rem;">
+        Whether you have a job opportunity, a project idea, or just want to say hello —
+        my inbox is always open. I'll get back to you as soon as possible!
+      </p>
+    </div>
 
     <div class="row g-4">
 
       <!-- LEFT — Contact Info -->
       <div class="col-md-5 reveal">
-        <div class="card p-4 h-100">
-          <h5 class="fw-bold mb-4">Contact Info</h5>
+        <div class="card p-4 h-100 shadow-sm">
+          <h5 class="fw-bold mb-1">Contact Details</h5>
+          <p class="text-muted small mb-4">Reach me through any of these channels</p>
 
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="text-primary flex-shrink-0">
-              <i class="fa-solid fa-phone fa-lg"></i>
+          <a href="tel:+18326190835" class="contact-info-item">
+            <div class="contact-icon bg-primary bg-opacity-10">
+              <i class="fa-solid fa-phone text-primary"></i>
             </div>
             <div>
               <p class="mb-0 small text-muted">Phone</p>
-              <a href="tel:+18326190835" class="text-dark text-decoration-none fw-semibold">
-                +1 832-619-0835
-              </a>
+              <p class="mb-0 fw-semibold text-dark">+1 832-619-0835</p>
             </div>
-          </div>
+          </a>
 
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="text-danger flex-shrink-0">
-              <i class="fa-solid fa-envelope fa-lg"></i>
+          <a href="mailto:kommidirithikareddy@gmail.com" class="contact-info-item">
+            <div class="contact-icon bg-danger bg-opacity-10">
+              <i class="fa-solid fa-envelope text-danger"></i>
             </div>
             <div>
               <p class="mb-0 small text-muted">Email</p>
-              <a href="mailto:kommidirithikareddy@gmail.com"
-                class="text-dark text-decoration-none fw-semibold">
-                kommidirithikareddy@gmail.com
-              </a>
+              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy@gmail.com</p>
             </div>
-          </div>
+          </a>
 
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="text-primary flex-shrink-0">
-              <i class="fa-brands fa-linkedin fa-lg"></i>
+          <a href="https://www.linkedin.com/in/kommidirithikareddy/"
+            target="_blank" class="contact-info-item">
+            <div class="contact-icon bg-primary bg-opacity-10">
+              <i class="fa-brands fa-linkedin text-primary"></i>
             </div>
             <div>
               <p class="mb-0 small text-muted">LinkedIn</p>
-              <a href="https://www.linkedin.com/in/kommidirithikareddy/"
-                target="_blank" class="text-dark text-decoration-none fw-semibold">
-                kommidirithikareddy
-              </a>
+              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy</p>
             </div>
-          </div>
+          </a>
 
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="text-dark flex-shrink-0">
-              <i class="fa-brands fa-github fa-lg"></i>
+          <a href="https://github.com/kommidirithikareddy"
+            target="_blank" class="contact-info-item">
+            <div class="contact-icon bg-dark bg-opacity-10">
+              <i class="fa-brands fa-github text-dark"></i>
             </div>
             <div>
               <p class="mb-0 small text-muted">GitHub</p>
-              <a href="https://github.com/kommidirithikareddy"
-                target="_blank" class="text-dark text-decoration-none fw-semibold">
-                kommidirithikareddy
-              </a>
+              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy</p>
             </div>
-          </div>
+          </a>
 
-          <div class="d-flex align-items-center gap-3 mb-3">
-            <div class="text-success flex-shrink-0">
-              <i class="fa-solid fa-location-dot fa-lg"></i>
+          <div class="contact-info-item" style="cursor:default;">
+            <div class="contact-icon bg-success bg-opacity-10">
+              <i class="fa-solid fa-location-dot text-success"></i>
             </div>
             <div>
               <p class="mb-0 small text-muted">Location</p>
@@ -106,60 +174,58 @@
             </div>
           </div>
 
-          <hr class="my-3">
-
-          <h6 class="fw-bold mb-3">Featured Projects</h6>
-          <div class="d-flex flex-column gap-2">
-            <a href="https://github.com/kommidirithikareddy/ai-legal-clause-analyzer"
-              target="_blank" class="btn btn-sm btn-outline-primary text-start">
-              <i class="fa-brands fa-github me-2"></i>⚖️ LexAI Legal Analyzer
-            </a>
-            <a href="https://github.com/kommidirithikareddy/AI-document-question-and-answers"
-              target="_blank" class="btn btn-sm btn-outline-primary text-start">
-              <i class="fa-brands fa-github me-2"></i>💬 DocChat Q&A
-            </a>
-            <a href="https://github.com/kommidirithikareddy/News-AI-Dashboard"
-              target="_blank" class="btn btn-sm btn-outline-primary text-start">
-              <i class="fa-brands fa-github me-2"></i>📰 NewsAI Dashboard
-            </a>
+          <!-- Response time note -->
+          <div class="mt-4 p-3 rounded-3" style="background:#f8f9fa;">
+            <p class="mb-0 small text-muted text-center">
+              <i class="fa-regular fa-clock me-1"></i>
+              Typical response time: <strong>within 24 hours</strong>
+            </p>
           </div>
         </div>
       </div>
 
       <!-- RIGHT — Contact Form -->
       <div class="col-md-7 reveal">
-        <div class="card p-4">
-          <h5 class="fw-bold mb-4">Send a Message</h5>
+        <div class="card p-4 shadow-sm">
+          <h5 class="fw-bold mb-1">Send a Message</h5>
+          <p class="text-muted small mb-4">Fill out the form and I'll get back to you shortly!</p>
 
           <form id="contact-form" action="https://formspree.io/f/xlgrrljy" method="POST">
 
             <div class="row g-3 mb-3">
               <div class="col-sm-6">
-                <label class="form-label">Name</label>
+                <label class="form-label fw-semibold">Name</label>
                 <input type="text" name="name" class="form-control"
-                  placeholder="Your name" required>
+                  placeholder="Your full name" required>
               </div>
               <div class="col-sm-6">
-                <label class="form-label">Email</label>
+                <label class="form-label fw-semibold">Email</label>
                 <input type="email" name="email" class="form-control"
                   placeholder="your@email.com" required>
               </div>
             </div>
 
             <div class="mb-3">
-              <label class="form-label">Subject</label>
-              <input type="text" name="subject" class="form-control"
-                placeholder="Job opportunity / Collaboration / Other">
+              <label class="form-label fw-semibold">Subject</label>
+              <select name="subject" class="form-select">
+                <option value="" disabled selected>What's this about?</option>
+                <option>Job Opportunity</option>
+                <option>Internship</option>
+                <option>Freelance / Contract</option>
+                <option>Collaboration</option>
+                <option>Just saying hello!</option>
+                <option>Other</option>
+              </select>
             </div>
 
-            <div class="mb-3">
-              <label class="form-label">Message</label>
+            <div class="mb-4">
+              <label class="form-label fw-semibold">Message</label>
               <textarea name="message" rows="5" class="form-control"
-                placeholder="Tell me about the opportunity or project..."
+                placeholder="Tell me about the opportunity, project, or just say hi! I'd love to hear from you 😊"
                 required></textarea>
             </div>
 
-            <button type="submit" class="btn btn-primary w-100">
+            <button type="submit" class="btn btn-primary btn-send w-100 text-white">
               <i class="fa-solid fa-paper-plane me-2"></i>Send Message
             </button>
           </form>
@@ -191,7 +257,7 @@
           headers: { "Accept": "application/json" }
         });
         if (response.ok) {
-          status.innerHTML = "<span class='text-success'>✅ Thanks! Your message has been sent.</span>";
+          status.innerHTML = "<span class='text-success fw-semibold'>✅ Thanks! Your message has been sent. I'll be in touch soon!</span>";
           form.reset();
         } else {
           status.innerHTML = "<span class='text-danger'>❌ Something went wrong. Please try again.</span>";
