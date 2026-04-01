@@ -1,0 +1,42 @@
+<svg width="860" height="170" viewBox="0 0 860 170" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="cy-left" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fef08a"/>
+      <stop offset="100%" style="stop-color:#fde047"/>
+    </linearGradient>
+    <linearGradient id="cy-right" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#fffdf0"/>
+      <stop offset="100%" style="stop-color:#fefce8"/>
+    </linearGradient>
+  </defs>
+  <rect width="860" height="170" rx="12" fill="url(#cy-right)"/>
+  <rect x="0" y="0" width="310" height="170" rx="12" fill="url(#cy-left)"/>
+  <rect x="288" y="0" width="22" height="170" fill="url(#cy-left)"/>
+  <circle cx="270" cy="25" r="65" fill="#fbbf24" opacity="0.18"/>
+  <circle cx="45" cy="158" r="50" fill="#fbbf24" opacity="0.14"/>
+  <circle cx="160" cy="8" r="18" fill="#fef9c3" opacity="0.5"/>
+  <text x="30" y="52" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" font-weight="700" fill="#92400e" letter-spacing="0.1em">FULL STACK · UI/UX · AI</text>
+  <text x="30" y="84" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="800" fill="#1c1917">Rithika Reddy</text>
+  <text x="30" y="108" font-family="'Segoe UI', system-ui, sans-serif" font-size="22" font-weight="800" fill="#44403c">Kommidi</text>
+  <rect x="30" y="120" width="162" height="20" rx="10" fill="#fbbf24" opacity="0.45"/>
+  <rect x="30" y="120" width="162" height="20" rx="10" fill="none" stroke="#d97706" stroke-width="1" opacity="0.6"/>
+  <circle cx="44" cy="130" r="3.5" fill="#d97706"/>
+  <text x="54" y="134" font-family="'Segoe UI', system-ui, sans-serif" font-size="10.5" font-weight="600" fill="#92400e">Open to Work · San Jose, CA</text>
+  <text x="30" y="158" font-family="'Segoe UI', system-ui, sans-serif" font-size="10" fill="#a16207">kommidirithikareddy.vercel.app</text>
+  <line x1="340" y1="94" x2="840" y2="94" stroke="#d4d4d4" stroke-width="1.5" stroke-dasharray="5 4"/>
+  <circle cx="372" cy="94" r="7" fill="#f59e0b"/>
+  <text x="372" y="72" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#92400e">CS Grad</text>
+  <text x="372" y="83" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#a8a29e">2021</text>
+  <circle cx="512" cy="94" r="7" fill="#10b981"/>
+  <text x="512" y="112" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#065f46">Full Stack</text>
+  <text x="512" y="123" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#a8a29e">2022</text>
+  <circle cx="652" cy="94" r="7" fill="#ca8a04"/>
+  <text x="652" y="72" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#92400e">AI / ML</text>
+  <text x="652" y="83" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#a8a29e">2023</text>
+  <circle cx="812" cy="94" r="13" fill="#fde047" opacity="0.30"/>
+  <circle cx="812" cy="94" r="7" fill="#fbbf24"/>
+  <text x="812" y="112" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9.5" font-weight="700" fill="#92400e">NOW</text>
+  <text x="812" y="123" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="9" fill="#a8a29e">Open to Work</text>
+  <text x="590" y="152" text-anchor="middle" font-family="'Segoe UI', system-ui, sans-serif" font-size="11" fill="#a8a29e" font-style="italic">Building the future, one commit at a time</text>
+  <rect x="340" y="162" width="500" height="1.5" rx="1" fill="#fde047" opacity="0.7"/>
+</svg>
