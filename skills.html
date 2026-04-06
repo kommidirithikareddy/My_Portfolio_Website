@@ -4,161 +4,167 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Skills — Rithika Reddy</title>
-
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow:#fde047; --yellow-dark:#ca8a04; --yellow-mid:#f59e0b; --yellow-light:#fef9c3; --cream:#fffdf0; --dark:#1c1917; --mid:#44403c; --soft:#a8a29e; --border:#f0ece4; --card:#ffffff; }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    .navbar { background: rgba(255,253,240,0.9) !important; backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .navbar-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark) !important; }
+    .nav-link { font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--mid) !important; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--yellow-dark) !important; }
+    .nav-cta { background: var(--yellow) !important; color: var(--dark) !important; border-radius: 8px; padding: 6px 16px !important; font-weight: 700 !important; }
+    .page-hero { max-width: 800px; margin: 56px auto 40px; padding: 0 24px; text-align: center; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); margin-bottom: 12px; }
+    .page-hero h1 span { background: linear-gradient(135deg,#f59e0b,#ca8a04); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { color: var(--soft); font-size: 1rem; line-height: 1.7; }
+    .tab-wrap { display: flex; justify-content: center; flex-wrap: wrap; gap: 8px; margin: 0 24px 40px; }
+    .tab-btn { padding: 8px 20px; border-radius: 100px; border: 1.5px solid var(--border); background: var(--card); font-family: 'DM Sans', sans-serif; font-size: 0.85rem; font-weight: 600; color: var(--mid); cursor: pointer; transition: all 0.22s; }
+    .tab-btn:hover { border-color: var(--yellow); background: var(--yellow-light); color: var(--yellow-dark); }
+    .tab-btn.active { background: var(--yellow); border-color: var(--yellow-dark); color: var(--dark); }
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px; max-width: 1060px; margin: 0 auto 80px; padding: 0 24px; }
+    .skill-card { background: var(--card); border-radius: 20px; border: 1px solid var(--border); padding: 26px 24px; transition: all 0.3s; }
+    .skill-card:hover { transform: translateY(-5px); box-shadow: 0 14px 36px rgba(0,0,0,0.08); border-color: #fde68a; }
+    .skill-card.hidden { display: none; }
+    .skill-card-header { display: flex; align-items: center; gap: 12px; margin-bottom: 18px; }
+    .skill-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--yellow-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; transition: transform 0.3s; }
+    .skill-card:hover .skill-icon { transform: scale(1.15) rotate(-5deg); }
+    .skill-card-title { font-weight: 700; font-size: 1rem; color: var(--dark); }
+    .skill-card-count { font-size: 0.75rem; color: var(--soft); }
+    .chip-wrap { display: flex; flex-wrap: wrap; gap: 7px; }
+    .skill-chip { padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border); background: var(--cream); font-size: 0.78rem; font-weight: 500; color: var(--mid); transition: all 0.2s; cursor: default; }
+    .skill-chip:hover { background: var(--yellow-light); border-color: #fde68a; color: var(--yellow-dark); }
+    .skill-chip.highlight { background: var(--yellow-light); border-color: #fde68a; color: var(--yellow-dark); font-weight: 700; }
+    .progress-list { display: flex; flex-direction: column; gap: 12px; }
+    .progress-label { display: flex; justify-content: space-between; font-size: 0.82rem; font-weight: 600; color: var(--mid); margin-bottom: 5px; }
+    .progress-bar-bg { height: 7px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .progress-bar-fill { height: 100%; border-radius: 10px; background: linear-gradient(90deg, #fde047, #f59e0b); width: 0%; transition: width 1.2s cubic-bezier(0.4,0,0.2,1); }
+    .soft-grid { display: grid; grid-template-columns: repeat(2,1fr); gap: 10px; }
+    .soft-item { background: var(--cream); border: 1px solid var(--border); border-radius: 12px; padding: 12px 14px; display: flex; align-items: center; gap: 10px; font-size: 0.82rem; font-weight: 500; color: var(--mid); transition: all 0.22s; }
+    .soft-item:hover { background: var(--yellow-light); border-color: #fde68a; color: var(--yellow-dark); }
+    .soft-item i { color: var(--yellow-mid); width: 16px; text-align: center; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1{transition-delay:0.05s} .delay-2{transition-delay:0.12s} .delay-3{transition-delay:0.18s} .delay-4{transition-delay:0.24s} .delay-5{transition-delay:0.30s} .delay-6{transition-delay:0.36s}
+    footer { border-top: 1px solid var(--border); background: var(--cream); }
+  </style>
 </head>
-
 <body>
-  
-  
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">R R K<span class="text-primary">.</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand fw-bold" href="index.html">R R K<span style="color:var(--yellow-mid);">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link active" href="skills.html">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta ms-2" href="contact.html">Let's Talk</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container py-5">
-    <h2 class="fw-bold reveal">Skills & Certifications</h2>
-    <p class="mb-4 reveal">Full-stack frontend engineer with hands-on AI integration experience — spanning modern frameworks, cloud tooling, and production-grade UI development.</p>
+  <div class="page-hero reveal">
+    <h1>Skills & <span>Expertise</span></h1>
+    <p>Full-stack engineer with hands-on AI integration experience — spanning modern frameworks, cloud tooling, and production-grade UI development.</p>
+  </div>
 
-    <div class="row g-4">
+  <div class="tab-wrap reveal">
+    <button class="tab-btn active" data-filter="all">All Skills</button>
+    <button class="tab-btn" data-filter="frontend">Frontend</button>
+    <button class="tab-btn" data-filter="backend">Backend</button>
+    <button class="tab-btn" data-filter="ai">AI & Data</button>
+    <button class="tab-btn" data-filter="tools">Tools</button>
+    <button class="tab-btn" data-filter="soft">Soft Skills</button>
+  </div>
 
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>Languages & Libraries</h5>
-          <ul>
-            <li>JavaScript, TypeScript</li>
-            <li>Python (Pandas, NumPy, matplotlib, scikit-learn)</li>
-            <li>Java</li>
-            <li>HTML, CSS, Bootstrap, Tailwind CSS</li>
-            <li>React, Angular, SvelteKit</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>Front-End & UI</h5>
-          <ul>
-            <li>Responsive web design & mobile-first layouts</li>
-            <li>Figma → pixel-perfect UI conversion</li>
-            <li>Reusable components & state management</li>
-            <li>Performance optimization & bundle analysis</li>
-            <li>Cross-browser compatibility</li>
-            <li>Svelte stores & reactive programming</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>AI & Machine Learning</h5>
-          <ul>
-            <li>API integration</li>
-            <li>AI-powered frontend workflows & UX</li>
-            <li>Prompt engineering & structured outputs</li>
-            <li>NLP basics, Scikit-learn</li>
-            <li>Document Q&A systems & AI summarization</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>Back-End & APIs</h5>
-          <ul>
-            <li>Node.js, Express.js, Python REST APIs</li>
-            <li>RESTful API design & integration</li>
-            <li>Docker, Redis, microservices</li>
-            <li>Azure DevOps, CI/CD pipelines</li>
-            <li>Version control with Git & GitHub</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>Databases</h5>
-          <ul>
-            <li>MongoDB, MySQL, PostgreSQL, RDBMS</li>
-            <li>Data modeling and schema design</li>
-            <li>SQL query optimization</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <h5>Data Visualization & BI</h5>
-          <ul>
-            <li>Power BI, Tableau, ggplot2</li>
-            <li>Interactive dashboard creation</li>
-            <li>Stakeholder reporting & data storytelling</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-12 reveal">
-        <div class="card p-3">
-          <h5>Tools & IDEs</h5>
-          <ul>
-            <li>VS Code, PyCharm, Jupyter Notebook, Google Colab</li>
-            <li>Git, GitHub, Azure DevOps</li>
-            <li>Vite, Webpack, build tooling</li>
-            <li>Vercel, cloud deployment</li>
-            <li>Figma, UI/UX design tools</li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="col-12 reveal">
-        <div class="card p-3">
-          <h5>Soft Skills & Methodologies</h5>
-          <ul>
-            <li>Agile, SDLC, Code Reviews, Regression Testing</li>
-            <li>Cross-functional collaboration with design, product & GTM teams</li>
-            <li>End-to-end feature ownership — design through deployment</li>
-            <li>Data governance, process improvement, workflow documentation</li>
-          </ul>
-        </div>
-      </div>
-
-    <!--X  <div class="col-12 reveal">
-        <div class="card p-3">
-          <h5>Certifications</h5>
-          <ul>
-            <li>Data Analytics and Visualization — Accenture</li>
-            <li>100 Days of Code: The Complete Python Pro Bootcamp — Udemy</li>
-            <li>Meta Front-End Developer— Coursera</li>
-          </ul>
-        </div>
-      </div> -->
-
+  <div class="skills-grid">
+    <div class="skill-card reveal delay-1" data-category="frontend backend">
+      <div class="skill-card-header"><div class="skill-icon">📝</div><div><div class="skill-card-title">Languages</div><div class="skill-card-count">7 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">JavaScript</span><span class="skill-chip highlight">TypeScript</span><span class="skill-chip highlight">Python</span><span class="skill-chip">Java</span><span class="skill-chip">SQL</span><span class="skill-chip">HTML</span><span class="skill-chip">CSS</span></div>
     </div>
-  </main>
+    <div class="skill-card reveal delay-2" data-category="frontend">
+      <div class="skill-card-header"><div class="skill-icon">🖥️</div><div><div class="skill-card-title">Frontend Frameworks</div><div class="skill-card-count">7 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">React</span><span class="skill-chip highlight">SvelteKit</span><span class="skill-chip highlight">Angular</span><span class="skill-chip highlight">Tailwind CSS</span><span class="skill-chip">Bootstrap</span><span class="skill-chip">SCSS</span><span class="skill-chip">Vite</span></div>
+    </div>
+    <div class="skill-card reveal delay-3" data-category="frontend">
+      <div class="skill-card-header"><div class="skill-icon">🎨</div><div><div class="skill-card-title">UI / UX Skills</div><div class="skill-card-count">6 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip">Figma</span><span class="skill-chip">Responsive Design</span><span class="skill-chip">Mobile-first</span><span class="skill-chip">Component Systems</span><span class="skill-chip">State Management</span><span class="skill-chip">Perf Optimization</span></div>
+    </div>
+    <div class="skill-card reveal delay-2" data-category="frontend">
+      <div class="skill-card-header"><div class="skill-icon">⚡</div><div><div class="skill-card-title">Proficiency</div><div class="skill-card-count">Top skills</div></div></div>
+      <div class="progress-list">
+        <div><div class="progress-label"><span>React / TypeScript</span><span>90%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="90"></div></div></div>
+        <div><div class="progress-label"><span>Tailwind CSS / SCSS</span><span>88%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="88"></div></div></div>
+        <div><div class="progress-label"><span>Python</span><span>82%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="82"></div></div></div>
+        <div><div class="progress-label"><span>Node.js / REST APIs</span><span>80%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="80"></div></div></div>
+        <div><div class="progress-label"><span>AI / LLM Integration</span><span>78%</span></div><div class="progress-bar-bg"><div class="progress-bar-fill" data-width="78"></div></div></div>
+      </div>
+    </div>
+    <div class="skill-card reveal delay-3" data-category="ai">
+      <div class="skill-card-header"><div class="skill-icon">🤖</div><div><div class="skill-card-title">AI & Machine Learning</div><div class="skill-card-count">8 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">LLM Integration</span><span class="skill-chip highlight">Prompt Engineering</span><span class="skill-chip">Groq API</span><span class="skill-chip">Claude AI</span><span class="skill-chip">Scikit-learn</span><span class="skill-chip">NLP Basics</span><span class="skill-chip">Document Q&A</span><span class="skill-chip">AI Summarization</span></div>
+    </div>
+    <div class="skill-card reveal delay-4" data-category="backend">
+      <div class="skill-card-header"><div class="skill-icon">⚙️</div><div><div class="skill-card-title">Backend & APIs</div><div class="skill-card-count">7 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">Node.js</span><span class="skill-chip highlight">Express.js</span><span class="skill-chip">Django</span><span class="skill-chip">REST APIs</span><span class="skill-chip">Microservices</span><span class="skill-chip">Redis</span><span class="skill-chip">Docker</span></div>
+    </div>
+    <div class="skill-card reveal delay-5" data-category="backend">
+      <div class="skill-card-header"><div class="skill-icon">🗄️</div><div><div class="skill-card-title">Databases</div><div class="skill-card-count">5 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">MongoDB</span><span class="skill-chip highlight">MySQL</span><span class="skill-chip">PostgreSQL</span><span class="skill-chip">SQL Query Optimization</span><span class="skill-chip">Schema Design</span></div>
+    </div>
+    <div class="skill-card reveal delay-4" data-category="ai">
+      <div class="skill-card-header"><div class="skill-icon">📊</div><div><div class="skill-card-title">Data & BI</div><div class="skill-card-count">6 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">Power BI</span><span class="skill-chip highlight">Tableau</span><span class="skill-chip">Pandas</span><span class="skill-chip">NumPy</span><span class="skill-chip">ggplot2</span><span class="skill-chip">Data Storytelling</span></div>
+    </div>
+    <div class="skill-card reveal delay-5" data-category="tools">
+      <div class="skill-card-header"><div class="skill-icon">🛠️</div><div><div class="skill-card-title">Dev Tools & Cloud</div><div class="skill-card-count">9 skills</div></div></div>
+      <div class="chip-wrap"><span class="skill-chip highlight">Git / GitHub</span><span class="skill-chip highlight">Azure DevOps</span><span class="skill-chip">CI/CD Pipelines</span><span class="skill-chip">Vercel</span><span class="skill-chip">Docker</span><span class="skill-chip">VS Code</span><span class="skill-chip">Vite / Webpack</span><span class="skill-chip">Figma</span><span class="skill-chip">Jupyter Notebook</span></div>
+    </div>
+    <div class="skill-card reveal delay-6" data-category="soft" style="grid-column: 1 / -1;">
+      <div class="skill-card-header"><div class="skill-icon">🤝</div><div><div class="skill-card-title">Soft Skills & Methodologies</div><div class="skill-card-count">8 skills</div></div></div>
+      <div class="soft-grid">
+        <div class="soft-item"><i class="fa-solid fa-rotate"></i> Agile & SDLC</div>
+        <div class="soft-item"><i class="fa-solid fa-code-branch"></i> Code Reviews</div>
+        <div class="soft-item"><i class="fa-solid fa-people-group"></i> Cross-functional Collaboration</div>
+        <div class="soft-item"><i class="fa-solid fa-flag-checkered"></i> Feature Ownership (Design → Deploy)</div>
+        <div class="soft-item"><i class="fa-solid fa-magnifying-glass"></i> Regression Testing</div>
+        <div class="soft-item"><i class="fa-solid fa-file-lines"></i> Workflow Documentation</div>
+        <div class="soft-item"><i class="fa-solid fa-shield"></i> Data Governance</div>
+        <div class="soft-item"><i class="fa-solid fa-lightbulb"></i> Process Improvement</div>
+      </div>
+    </div>
+  </div>
 
   <footer class="py-4 text-center">
-    <div class="container">
-      <small>&copy; 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small>
-    </div>
+    <div class="container"><small style="color:var(--soft);">&copy; 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small></div>
   </footer>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+    const barObs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) { e.target.querySelectorAll('.progress-bar-fill').forEach(bar => { setTimeout(() => { bar.style.width = bar.dataset.width + '%'; }, 200); }); barObs.unobserve(e.target); } }); }, { threshold: 0.3 });
+    document.querySelectorAll('.skill-card').forEach(c => barObs.observe(c));
+    document.querySelectorAll('.tab-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        const filter = btn.dataset.filter;
+        document.querySelectorAll('.skill-card').forEach(card => {
+          const cats = card.dataset.category || '';
+          if (filter === 'all' || cats.includes(filter)) card.classList.remove('hidden');
+          else card.classList.add('hidden');
+        });
+      });
+    });
+  </script>
   <script src="js/script.js"></script>
 </body>
 </html>

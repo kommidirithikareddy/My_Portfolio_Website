@@ -8,266 +8,198 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
   <style>
-    .contact-hero {
-      background: linear-gradient(135deg, #f0f4ff 0%, #e8f0fe 100%);
-      border-radius: 16px;
-      padding: 40px;
-      margin-bottom: 40px;
-    }
-    .contact-info-item {
-      display: flex;
-      align-items: center;
-      gap: 16px;
-      padding: 14px 0;
-      border-bottom: 1px solid #f0f0f0;
-      text-decoration: none;
-      color: inherit;
-      transition: all 0.2s;
-    }
-    .contact-info-item:last-child { border-bottom: none; }
-    .contact-info-item:hover { transform: translateX(4px); color: #0d6efd; }
-    .contact-icon {
-      width: 44px;
-      height: 44px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-      font-size: 1.1rem;
-    }
-    .status-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: #d1fae5;
-      color: #065f46;
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      margin-bottom: 16px;
-    }
-    .status-dot {
-      width: 8px;
-      height: 8px;
-      background: #10b981;
-      border-radius: 50%;
-      animation: pulse 2s infinite;
-    }
-    @keyframes pulse {
-      0%, 100% { opacity: 1; transform: scale(1); }
-      50% { opacity: 0.6; transform: scale(1.3); }
-    }
-    .form-control:focus {
-      border-color: #0d6efd;
-      box-shadow: 0 0 0 3px rgba(13, 110, 253, 0.1);
-    }
-    .btn-send {
-      background: linear-gradient(135deg, #0d6efd, #0056d3);
-      border: none;
-      padding: 12px;
-      font-weight: 600;
-      letter-spacing: 0.3px;
-      transition: all 0.3s;
-    }
-    .btn-send:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 8px 20px rgba(13, 110, 253, 0.35);
-    }
+    :root { --yellow:#fde047; --yellow-dark:#ca8a04; --yellow-light:#fef9c3; --cream:#fffdf0; --dark:#1c1917; --mid:#44403c; --soft:#a8a29e; --card-bg:#ffffff; --border:#f0ece4; }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    #particles-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 0; }
+    .page-wrap { position: relative; z-index: 1; }
+    .navbar { background: rgba(255,253,240,0.9) !important; backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .navbar-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark) !important; }
+    .nav-link { font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--mid) !important; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--yellow-dark) !important; }
+    .nav-cta { background: var(--yellow) !important; color: var(--dark) !important; border-radius: 8px; padding: 6px 16px !important; font-weight: 700 !important; }
+    .contact-hero { text-align: center; padding: 64px 24px 48px; }
+    .contact-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.15; margin-bottom: 16px; }
+    .contact-hero h1 span { background: linear-gradient(135deg, #f59e0b, #ca8a04); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .contact-hero p { color: var(--soft); font-size: 1.1rem; max-width: 480px; margin: 0 auto 28px; }
+    .status-pill { display: inline-flex; align-items: center; gap: 8px; background: #d1fae5; color: #065f46; border-radius: 100px; padding: 7px 18px; font-size: 0.85rem; font-weight: 600; margin-bottom: 24px; box-shadow: 0 2px 8px rgba(16,185,129,0.15); }
+    .status-dot { width: 8px; height: 8px; background: #10b981; border-radius: 50%; animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.5;transform:scale(1.4)} }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1.5fr; gap: 28px; max-width: 1000px; margin: 0 auto 80px; padding: 0 20px; }
+    @media (max-width: 768px) { .contact-grid { grid-template-columns: 1fr; } }
+    .glass-card { background: var(--card-bg); border-radius: 20px; border: 1px solid var(--border); box-shadow: 0 4px 24px rgba(0,0,0,0.05); padding: 32px; transition: box-shadow 0.3s; }
+    .glass-card:hover { box-shadow: 0 8px 40px rgba(0,0,0,0.10); }
+    .info-item { display: flex; align-items: center; gap: 14px; padding: 14px 0; border-bottom: 1px solid var(--border); text-decoration: none; color: var(--dark); transition: all 0.25s; }
+    .info-item:last-of-type { border-bottom: none; }
+    .info-item:hover { transform: translateX(6px); color: var(--yellow-dark); }
+    .info-icon { width: 42px; height: 42px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1rem; flex-shrink: 0; transition: transform 0.3s; }
+    .info-item:hover .info-icon { transform: scale(1.15) rotate(-5deg); }
+    .info-label { font-size: 0.75rem; color: var(--soft); margin-bottom: 1px; }
+    .info-value { font-weight: 600; font-size: 0.9rem; }
+    .avail-card { margin-top: 20px; background: var(--yellow-light); border: 1px solid #fde68a; border-radius: 14px; padding: 18px 20px; }
+    .avail-card h6 { font-weight: 700; color: var(--yellow-dark); margin-bottom: 8px; }
+    .avail-row { display: flex; justify-content: space-between; font-size: 0.82rem; color: var(--mid); padding: 4px 0; border-bottom: 1px solid #fde68a44; }
+    .avail-row:last-child { border-bottom: none; }
+    .avail-row span:last-child { font-weight: 600; color: #065f46; }
+    .form-label { font-weight: 600; font-size: 0.85rem; color: var(--mid); margin-bottom: 6px; }
+    .form-control, .form-select { border: 1.5px solid var(--border); border-radius: 10px; padding: 11px 14px; font-family: 'DM Sans', sans-serif; font-size: 0.9rem; background: #fafaf8; transition: all 0.25s; }
+    .form-control:focus, .form-select:focus { border-color: var(--yellow); box-shadow: 0 0 0 3px rgba(253,224,71,0.25); background: #fff; outline: none; }
+    .form-control.valid { border-color: #10b981; }
+    .form-control.invalid { border-color: #ef4444; }
+    .field-wrap { position: relative; margin-bottom: 18px; }
+    .field-icon { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); font-size: 0.85rem; pointer-events: none; }
+    .field-hint { font-size: 0.75rem; color: var(--soft); margin-top: 4px; min-height: 16px; }
+    .field-hint.error { color: #ef4444; }
+    .field-hint.success { color: #10b981; }
+    .topic-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 18px; }
+    .chip { padding: 6px 14px; border-radius: 100px; border: 1.5px solid var(--border); background: #fafaf8; font-size: 0.8rem; font-weight: 500; cursor: pointer; transition: all 0.2s; user-select: none; color: var(--mid); }
+    .chip:hover { border-color: var(--yellow); background: var(--yellow-light); }
+    .chip.active { background: var(--yellow); border-color: var(--yellow-dark); color: var(--dark); font-weight: 700; transform: scale(1.05); }
+    .char-counter { font-size: 0.75rem; color: var(--soft); text-align: right; margin-top: 4px; }
+    .char-counter.warn { color: #f59e0b; }
+    .char-counter.over { color: #ef4444; }
+    .btn-send { width: 100%; padding: 14px; background: linear-gradient(135deg, #fde047, #f59e0b); border: none; border-radius: 12px; font-family: 'DM Sans', sans-serif; font-weight: 700; font-size: 1rem; color: var(--dark); cursor: pointer; transition: all 0.3s; }
+    .btn-send:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 10px 28px rgba(245,158,11,0.4); }
+    .btn-send:disabled { opacity: 0.7; cursor: not-allowed; }
+    .btn-send .btn-loader { display: none; }
+    .form-progress { height: 3px; background: var(--border); border-radius: 3px; margin-bottom: 24px; overflow: hidden; }
+    .form-progress-bar { height: 100%; background: linear-gradient(90deg, #fde047, #f59e0b); border-radius: 3px; width: 0%; transition: width 0.4s ease; }
+    .success-overlay { display: none; text-align: center; padding: 40px 20px; }
+    .success-overlay.show { display: block; animation: fadeIn 0.5s ease; }
+    @keyframes fadeIn { from{opacity:0;transform:translateY(10px)} to{opacity:1;transform:translateY(0)} }
+    .success-icon { width: 72px; height: 72px; background: #d1fae5; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; margin: 0 auto 20px; animation: popIn 0.5s cubic-bezier(0.175,0.885,0.32,1.275); }
+    @keyframes popIn { from{transform:scale(0)} to{transform:scale(1)} }
+    #confetti-canvas { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 9999; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.6s ease, transform 0.6s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    footer { border-top: 1px solid var(--border); background: var(--cream); }
   </style>
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+<canvas id="particles-canvas"></canvas>
+<canvas id="confetti-canvas"></canvas>
+<div class="page-wrap">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">R R K<span class="text-primary">.</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand fw-bold" href="index.html">R R K<span style="color:var(--yellow-mid);">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-          <li class="nav-item"><a class="nav-link active" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link active nav-cta ms-2" href="contact.html">Let's Talk</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container py-5">
+  <div class="contact-hero reveal">
+    <div class="status-pill"><div class="status-dot"></div>Open to Work — Available Now</div>
+    <h1>Let's Build Something<br><span>Great Together</span></h1>
+    <p>Whether it's a job opportunity, project idea, or just a hello — I'd love to hear from you!</p>
+  </div>
 
-    <!-- Hero Banner -->
-    <div class="contact-hero reveal">
-      <div class="status-badge">
-        <div class="status-dot"></div>
-        Available for opportunities
-      </div>
-      <h2 class="fw-bold mb-2">Let's Work Together</h2>
-      <p class="text-muted mb-0" style="max-width: 520px; font-size: 1.05rem;">
-        Whether you have a job opportunity, a project idea, or just want to say hello —
-        my inbox is always open. I'll get back to you as soon as possible!
-      </p>
-    </div>
-
-    <div class="row g-4">
-
-      <!-- LEFT — Contact Info -->
-      <div class="col-md-5 reveal">
-        <div class="card p-4 h-100 shadow-sm">
-          <h5 class="fw-bold mb-1">Contact Details</h5>
-          <p class="text-muted small mb-4">Reach me through any of these channels</p>
-
-          <a href="tel:+18326190835" class="contact-info-item">
-            <div class="contact-icon bg-primary bg-opacity-10">
-              <i class="fa-solid fa-phone text-primary"></i>
-            </div>
-            <div>
-              <p class="mb-0 small text-muted">Phone</p>
-              <p class="mb-0 fw-semibold text-dark">+1 832-619-0835</p>
-            </div>
-          </a>
-
-          <a href="mailto:kommidirithikareddy@gmail.com" class="contact-info-item">
-            <div class="contact-icon bg-danger bg-opacity-10">
-              <i class="fa-solid fa-envelope text-danger"></i>
-            </div>
-            <div>
-              <p class="mb-0 small text-muted">Email</p>
-              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy@gmail.com</p>
-            </div>
-          </a>
-
-          <a href="https://www.linkedin.com/in/kommidirithikareddy/"
-            target="_blank" class="contact-info-item">
-            <div class="contact-icon bg-primary bg-opacity-10">
-              <i class="fa-brands fa-linkedin text-primary"></i>
-            </div>
-            <div>
-              <p class="mb-0 small text-muted">LinkedIn</p>
-              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy</p>
-            </div>
-          </a>
-
-          <a href="https://github.com/kommidirithikareddy"
-            target="_blank" class="contact-info-item">
-            <div class="contact-icon bg-dark bg-opacity-10">
-              <i class="fa-brands fa-github text-dark"></i>
-            </div>
-            <div>
-              <p class="mb-0 small text-muted">GitHub</p>
-              <p class="mb-0 fw-semibold text-dark">kommidirithikareddy</p>
-            </div>
-          </a>
-
-          <div class="contact-info-item" style="cursor:default;">
-            <div class="contact-icon bg-success bg-opacity-10">
-              <i class="fa-solid fa-location-dot text-success"></i>
-            </div>
-            <div>
-              <p class="mb-0 small text-muted">Location</p>
-              <p class="mb-0 fw-semibold text-dark">San Jose, CA</p>
-            </div>
-          </div>
-
-          <!-- Response time note -->
-          <div class="mt-4 p-3 rounded-3" style="background:#f8f9fa;">
-            <p class="mb-0 small text-muted text-center">
-              <i class="fa-regular fa-clock me-1"></i>
-              Typical response time: <strong>within 24 hours</strong>
-            </p>
-          </div>
+  <div class="contact-grid">
+    <div class="reveal" style="transition-delay:0.1s">
+      <div class="glass-card">
+        <h5 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:4px;">Contact Details</h5>
+        <p style="color:var(--soft);font-size:0.85rem;margin-bottom:20px;">Reach me through any channel below</p>
+        <a href="tel:+18326190835" class="info-item"><div class="info-icon" style="background:#eff6ff;"><i class="fa-solid fa-phone" style="color:#3b82f6;"></i></div><div><div class="info-label">Phone</div><div class="info-value">+1 832-619-0835</div></div></a>
+        <a href="mailto:kommidirithikareddy@gmail.com" class="info-item"><div class="info-icon" style="background:#fef2f2;"><i class="fa-solid fa-envelope" style="color:#ef4444;"></i></div><div><div class="info-label">Email</div><div class="info-value">kommidirithikareddy@gmail.com</div></div></a>
+        <a href="https://www.linkedin.com/in/kommidirithikareddy/" target="_blank" class="info-item"><div class="info-icon" style="background:#eff6ff;"><i class="fa-brands fa-linkedin" style="color:#0a66c2;"></i></div><div><div class="info-label">LinkedIn</div><div class="info-value">kommidirithikareddy</div></div></a>
+        <a href="https://github.com/kommidirithikareddy" target="_blank" class="info-item"><div class="info-icon" style="background:#f9fafb;"><i class="fa-brands fa-github" style="color:#1c1917;"></i></div><div><div class="info-label">GitHub</div><div class="info-value">kommidirithikareddy</div></div></a>
+        <a href="https://kommidirithikareddy.vercel.app/" target="_blank" class="info-item"><div class="info-icon" style="background:#fef9c3;"><i class="fa-solid fa-globe" style="color:#ca8a04;"></i></div><div><div class="info-label">Portfolio</div><div class="info-value">kommidirithikareddy.vercel.app</div></div></a>
+        <div class="info-item" style="cursor:default;"><div class="info-icon" style="background:#f0fdf4;"><i class="fa-solid fa-location-dot" style="color:#10b981;"></i></div><div><div class="info-label">Location</div><div class="info-value">San Jose, CA</div></div></div>
+        <div class="avail-card">
+          <h6><i class="fa-solid fa-calendar-check me-2"></i>Availability</h6>
+          <div class="avail-row"><span>Full-time roles</span><span>✅ Open</span></div>
+          <div class="avail-row"><span>Internships</span><span>✅ Open</span></div>
+          <div class="avail-row"><span>Freelance / Contract</span><span>✅ Open</span></div>
+          <div class="avail-row"><span>Response time</span><span>Within 24 hrs</span></div>
         </div>
       </div>
+    </div>
 
-      <!-- RIGHT — Contact Form -->
-      <div class="col-md-7 reveal">
-        <div class="card p-4 shadow-sm">
-          <h5 class="fw-bold mb-1">Send a Message</h5>
-          <p class="text-muted small mb-4">Fill out the form and I'll get back to you shortly!</p>
-
-          <form id="contact-form" action="https://formspree.io/f/xlgrrljy" method="POST">
-
-            <div class="row g-3 mb-3">
-              <div class="col-sm-6">
-                <label class="form-label fw-semibold">Name</label>
-                <input type="text" name="name" class="form-control"
-                  placeholder="Your full name" required>
-              </div>
-              <div class="col-sm-6">
-                <label class="form-label fw-semibold">Email</label>
-                <input type="email" name="email" class="form-control"
-                  placeholder="your@email.com" required>
-              </div>
+    <div class="reveal" style="transition-delay:0.2s">
+      <div class="glass-card">
+        <h5 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:4px;">Send a Message</h5>
+        <p style="color:var(--soft);font-size:0.85rem;margin-bottom:20px;">I read every message and reply personally 💛</p>
+        <div class="form-progress"><div class="form-progress-bar" id="progress-bar"></div></div>
+        <form id="contact-form" action="https://formspree.io/f/xlgrrljy" method="POST" novalidate>
+          <div class="row g-3 mb-0">
+            <div class="col-sm-6">
+              <label class="form-label">Your Name</label>
+              <div class="field-wrap"><input type="text" id="f-name" name="name" class="form-control" placeholder="Rithika Reddy" required><span class="field-icon" id="icon-name"></span></div>
+              <div class="field-hint" id="hint-name"></div>
             </div>
-
-            <div class="mb-3">
-              <label class="form-label fw-semibold">Subject</label>
-              <select name="subject" class="form-select">
-                <option value="" disabled selected>What's this about?</option>
-                <option>Job Opportunity</option>
-                <option>Internship</option>
-                <option>Freelance / Contract</option>
-                <option>Collaboration</option>
-                <option>Just saying hello!</option>
-                <option>Other</option>
-              </select>
+            <div class="col-sm-6">
+              <label class="form-label">Email Address</label>
+              <div class="field-wrap"><input type="email" id="f-email" name="email" class="form-control" placeholder="you@email.com" required><span class="field-icon" id="icon-email"></span></div>
+              <div class="field-hint" id="hint-email"></div>
             </div>
-
-            <div class="mb-4">
-              <label class="form-label fw-semibold">Message</label>
-              <textarea name="message" rows="5" class="form-control"
-                placeholder="Tell me about the opportunity, project, or just say hi! I'd love to hear from you 😊"
-                required></textarea>
-            </div>
-
-            <button type="submit" class="btn btn-primary btn-send w-100 text-white">
-              <i class="fa-solid fa-paper-plane me-2"></i>Send Message
-            </button>
-          </form>
-
-          <p id="form-status" class="mt-3 text-center"></p>
+          </div>
+          <div style="margin-bottom:6px;margin-top:18px;"><label class="form-label">What's this about?</label><input type="hidden" id="f-subject" name="subject" value=""></div>
+          <div class="topic-chips">
+            <div class="chip" data-val="Job Opportunity">💼 Job Opportunity</div>
+            <div class="chip" data-val="Internship">🎓 Internship</div>
+            <div class="chip" data-val="Freelance / Contract">🤝 Freelance</div>
+            <div class="chip" data-val="Collaboration">🚀 Collaboration</div>
+            <div class="chip" data-val="Just saying hello!">👋 Just saying hi!</div>
+            <div class="chip" data-val="Other">💡 Other</div>
+          </div>
+          <div style="margin-bottom:6px;"><label class="form-label">Message</label></div>
+          <textarea id="f-message" name="message" rows="5" class="form-control" placeholder="Tell me about the opportunity, project, or just say hi! I'd love to hear from you 😊" maxlength="1000" required></textarea>
+          <div class="char-counter" id="char-counter">0 / 1000</div>
+          <button type="submit" class="btn-send mt-3" id="btn-send">
+            <span class="btn-text"><i class="fa-solid fa-paper-plane me-2"></i>Send Message</span>
+            <span class="btn-loader"><i class="fa-solid fa-spinner fa-spin me-2"></i>Sending...</span>
+          </button>
+        </form>
+        <div class="success-overlay" id="success-overlay">
+          <div class="success-icon">✅</div>
+          <h5 style="font-family:'Playfair Display',serif;font-size:1.4rem;margin-bottom:8px;">Message Sent!</h5>
+          <p style="color:var(--soft);">Thanks for reaching out! I'll get back to you within 24 hours.</p>
+          <button class="btn-send" style="max-width:200px;margin:16px auto 0;display:block;" onclick="resetForm()">Send Another</button>
         </div>
       </div>
-
     </div>
-  </main>
+  </div>
 
   <footer class="py-4 text-center">
-    <div class="container">
-      <small>© 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small>
-    </div>
+    <div class="container"><small style="color:var(--soft);">© 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small></div>
   </footer>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
-  <script>
-    const form = document.getElementById("contact-form");
-    const status = document.getElementById("form-status");
-    form.addEventListener("submit", async function(event) {
-      event.preventDefault();
-      const data = new FormData(form);
-      try {
-        const response = await fetch(form.action, {
-          method: form.method,
-          body: data,
-          headers: { "Accept": "application/json" }
-        });
-        if (response.ok) {
-          status.innerHTML = "<span class='text-success fw-semibold'>✅ Thanks! Your message has been sent. I'll be in touch soon!</span>";
-          form.reset();
-        } else {
-          status.innerHTML = "<span class='text-danger'>❌ Something went wrong. Please try again.</span>";
-        }
-      } catch(error) {
-        status.innerHTML = "<span class='text-danger'>❌ Network error. Please try again later.</span>";
-      }
-    });
-  </script>
-  <script src="js/script.js"></script>
-
+</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script>
+(function() {
+  const canvas=document.getElementById('particles-canvas'),ctx=canvas.getContext('2d');
+  let W,H,particles=[];
+  function resize(){W=canvas.width=window.innerWidth;H=canvas.height=window.innerHeight;}
+  resize();window.addEventListener('resize',resize);
+  class Particle{constructor(){this.reset();}reset(){this.x=Math.random()*W;this.y=Math.random()*H;this.r=Math.random()*3+1;this.dx=(Math.random()-0.5)*0.4;this.dy=-Math.random()*0.5-0.2;this.alpha=Math.random()*0.25+0.05;this.color=Math.random()>0.5?'#fde047':'#fbbf24';}update(){this.x+=this.dx;this.y+=this.dy;if(this.y<-10)this.reset();}draw(){ctx.save();ctx.globalAlpha=this.alpha;ctx.fillStyle=this.color;ctx.beginPath();ctx.arc(this.x,this.y,this.r,0,Math.PI*2);ctx.fill();ctx.restore();}}
+  for(let i=0;i<60;i++)particles.push(new Particle());
+  function loop(){ctx.clearRect(0,0,W,H);particles.forEach(p=>{p.update();p.draw();});requestAnimationFrame(loop);}
+  loop();
+})();
+document.querySelectorAll('.reveal').forEach(el=>{new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible');});},{threshold:0.1}).observe(el);});
+document.querySelectorAll('.chip').forEach(chip=>{chip.addEventListener('click',()=>{document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));chip.classList.add('active');document.getElementById('f-subject').value=chip.dataset.val;updateProgress();});});
+function validateName(){const f=document.getElementById('f-name'),hint=document.getElementById('hint-name'),icon=document.getElementById('icon-name'),v=f.value.trim();if(!v){f.className='form-control';hint.textContent='';icon.textContent='';return false;}if(v.length<2){f.className='form-control invalid';hint.className='field-hint error';hint.textContent='Name is too short';icon.textContent='❌';return false;}f.className='form-control valid';hint.className='field-hint success';hint.textContent=`Hi, ${v.split(' ')[0]}! 👋`;icon.textContent='✅';return true;}
+function validateEmail(){const f=document.getElementById('f-email'),hint=document.getElementById('hint-email'),icon=document.getElementById('icon-email'),v=f.value.trim();if(!v){f.className='form-control';hint.textContent='';icon.textContent='';return false;}const ok=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v);if(!ok){f.className='form-control invalid';hint.className='field-hint error';hint.textContent='Please enter a valid email';icon.textContent='❌';return false;}f.className='form-control valid';hint.className='field-hint success';hint.textContent='Looks good!';icon.textContent='✅';return true;}
+function validateMessage(){return document.getElementById('f-message').value.trim().length>=10;}
+document.getElementById('f-name').addEventListener('input',()=>{validateName();updateProgress();});
+document.getElementById('f-email').addEventListener('input',()=>{validateEmail();updateProgress();});
+document.getElementById('f-message').addEventListener('input',()=>{updateProgress();const len=document.getElementById('f-message').value.length,counter=document.getElementById('char-counter');counter.textContent=`${len} / 1000`;counter.className='char-counter'+(len>900?' over':len>700?' warn':'');});
+function updateProgress(){let score=0;if(validateName())score+=25;if(validateEmail())score+=25;if(document.getElementById('f-subject').value)score+=25;if(validateMessage())score+=25;document.getElementById('progress-bar').style.width=score+'%';}
+function launchConfetti(){const canvas=document.getElementById('confetti-canvas'),ctx=canvas.getContext('2d');canvas.width=window.innerWidth;canvas.height=window.innerHeight;const pieces=[],colors=['#fde047','#fbbf24','#f59e0b','#10b981','#3b82f6','#ec4899','#ffffff'];for(let i=0;i<120;i++)pieces.push({x:Math.random()*canvas.width,y:-20,w:Math.random()*10+4,h:Math.random()*6+3,color:colors[Math.floor(Math.random()*colors.length)],rotation:Math.random()*360,rotSpeed:(Math.random()-0.5)*6,dx:(Math.random()-0.5)*4,dy:Math.random()*4+2,alpha:1});function draw(){ctx.clearRect(0,0,canvas.width,canvas.height);let alive=false;pieces.forEach(p=>{if(p.alpha<=0)return;p.y+=p.dy;p.x+=p.dx;p.rotation+=p.rotSpeed;if(p.y>canvas.height*0.6)p.alpha-=0.02;if(p.alpha>0)alive=true;ctx.save();ctx.globalAlpha=Math.max(0,p.alpha);ctx.translate(p.x,p.y);ctx.rotate(p.rotation*Math.PI/180);ctx.fillStyle=p.color;ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);ctx.restore();});if(alive)requestAnimationFrame(draw);else ctx.clearRect(0,0,canvas.width,canvas.height);}draw();}
+const form=document.getElementById('contact-form'),btn=document.getElementById('btn-send');
+form.addEventListener('submit',async function(e){e.preventDefault();if(!validateName()||!validateEmail()||!validateMessage()){if(!validateMessage())document.getElementById('f-message').className='form-control invalid';return;}btn.disabled=true;btn.querySelector('.btn-text').style.display='none';btn.querySelector('.btn-loader').style.display='inline';try{const res=await fetch(form.action,{method:'POST',body:new FormData(form),headers:{'Accept':'application/json'}});if(res.ok){form.style.display='none';document.getElementById('success-overlay').classList.add('show');launchConfetti();}else alert('Something went wrong. Please try again.');}catch(err){alert('Network error. Please try again later.');}finally{btn.disabled=false;btn.querySelector('.btn-text').style.display='inline';btn.querySelector('.btn-loader').style.display='none';}});
+function resetForm(){form.reset();form.style.display='block';document.getElementById('success-overlay').classList.remove('show');document.querySelectorAll('.chip').forEach(c=>c.classList.remove('active'));document.getElementById('f-subject').value='';document.getElementById('progress-bar').style.width='0%';document.getElementById('char-counter').textContent='0 / 1000';['f-name','f-email','f-message'].forEach(id=>document.getElementById(id).className='form-control');['hint-name','hint-email'].forEach(id=>document.getElementById(id).textContent='');['icon-name','icon-email'].forEach(id=>document.getElementById(id).textContent='');}
+</script>
+<script src="js/script.js"></script>
 </body>
 </html>

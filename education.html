@@ -8,176 +8,135 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.ico">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+  <style>
+    :root { --yellow:#fde047; --yellow-dark:#ca8a04; --yellow-mid:#f59e0b; --yellow-light:#fef9c3; --cream:#fffdf0; --dark:#1c1917; --mid:#44403c; --soft:#a8a29e; --border:#f0ece4; --card:#ffffff; }
+    * { box-sizing: border-box; }
+    body { font-family: 'DM Sans', sans-serif; background: var(--cream); color: var(--dark); overflow-x: hidden; }
+    .navbar { background: rgba(255,253,240,0.9) !important; backdrop-filter: blur(12px); border-bottom: 1px solid var(--border); }
+    .navbar-brand { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--dark) !important; }
+    .nav-link { font-family: 'DM Sans', sans-serif; font-weight: 500; color: var(--mid) !important; transition: color 0.2s; }
+    .nav-link:hover, .nav-link.active { color: var(--yellow-dark) !important; }
+    .nav-cta { background: var(--yellow) !important; color: var(--dark) !important; border-radius: 8px; padding: 6px 16px !important; font-weight: 700 !important; }
+    .page-hero { max-width: 700px; margin: 56px auto 52px; padding: 0 24px; text-align: center; }
+    .page-hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(2rem,4vw,3rem); margin-bottom: 12px; }
+    .page-hero h1 span { background: linear-gradient(135deg,#f59e0b,#ca8a04); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .page-hero p { color: var(--soft); font-size: 1rem; line-height: 1.7; }
+    .edu-wrap { max-width: 860px; margin: 0 auto 72px; padding: 0 24px; }
+    .section-label { display: flex; align-items: center; gap: 12px; font-family: 'Playfair Display', serif; font-size: 1.6rem; margin-bottom: 28px; }
+    .section-label .label-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--yellow-light); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .edu-timeline { position: relative; padding-left: 32px; }
+    .edu-timeline::before { content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px; width: 2px; background: linear-gradient(to bottom, #fde047, #fbbf24, #f59e0b); border-radius: 2px; }
+    .edu-card { position: relative; background: var(--card); border-radius: 20px; border: 1px solid var(--border); padding: 28px; margin-bottom: 24px; transition: all 0.3s; overflow: hidden; }
+    .edu-card::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px; background: linear-gradient(90deg, #fde047, #f59e0b); opacity: 0; transition: opacity 0.3s; }
+    .edu-card:hover { transform: translateY(-4px); box-shadow: 0 14px 36px rgba(0,0,0,0.09); border-color: #fde68a; }
+    .edu-card:hover::before { opacity: 1; }
+    .edu-dot { position: absolute; left: -38px; top: 28px; width: 18px; height: 18px; border-radius: 50%; background: var(--yellow); border: 3px solid var(--yellow-dark); box-shadow: 0 0 0 5px rgba(253,224,71,0.2); transition: transform 0.3s; }
+    .edu-card:hover .edu-dot { transform: scale(1.3); }
+    .edu-card-top { display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 10px; margin-bottom: 6px; }
+    .edu-school { font-family: 'Playfair Display', serif; font-size: 1.15rem; font-weight: 700; }
+    .edu-country-badge { padding: 4px 14px; border-radius: 100px; font-size: 0.78rem; font-weight: 700; display: inline-flex; align-items: center; gap: 5px; }
+    .badge-usa { background: #dbeafe; color: #1e40af; }
+    .badge-india { background: var(--yellow-light); color: var(--yellow-dark); }
+    .edu-degree { font-size: 0.95rem; font-weight: 600; color: var(--dark); margin-bottom: 4px; }
+    .edu-meta { font-size: 0.82rem; color: var(--soft); margin-bottom: 18px; display: flex; gap: 14px; flex-wrap: wrap; }
+    .edu-highlight { background: var(--yellow-light); border: 1px solid #fde68a; border-radius: 10px; padding: 10px 14px; font-size: 0.82rem; font-weight: 600; color: var(--yellow-dark); margin-bottom: 16px; display: flex; align-items: center; gap: 8px; }
+    .coursework-label { font-size: 0.78rem; font-weight: 700; color: var(--yellow-dark); letter-spacing: 0.06em; text-transform: uppercase; margin-bottom: 10px; display: flex; align-items: center; gap: 6px; }
+    .course-chips { display: flex; flex-wrap: wrap; gap: 7px; }
+    .course-chip { padding: 4px 12px; border-radius: 100px; border: 1px solid var(--border); background: var(--cream); font-size: 0.78rem; font-weight: 500; color: var(--mid); transition: all 0.2s; }
+    .course-chip:hover { background: var(--yellow-light); border-color: #fde68a; color: var(--yellow-dark); }
+    .cert-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 16px; margin-top: 4px; }
+    .cert-card { background: var(--card); border-radius: 16px; border: 1px solid var(--border); padding: 20px; display: flex; align-items: center; gap: 16px; transition: all 0.3s; cursor: default; }
+    .cert-card:hover { transform: translateY(-4px); box-shadow: 0 12px 28px rgba(0,0,0,0.08); border-color: #fde68a; }
+    .cert-icon-wrap { width: 48px; height: 48px; border-radius: 14px; background: var(--yellow-light); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; transition: transform 0.3s; }
+    .cert-card:hover .cert-icon-wrap { transform: scale(1.15) rotate(-6deg); }
+    .cert-name { font-weight: 700; font-size: 0.9rem; color: var(--dark); margin-bottom: 3px; }
+    .cert-issuer { font-size: 0.78rem; color: var(--soft); }
+    .cert-new { display: inline-block; background: var(--yellow); color: var(--dark); border-radius: 100px; padding: 1px 9px; font-size: 0.68rem; font-weight: 800; margin-top: 4px; }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity 0.65s ease, transform 0.65s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    .delay-1{transition-delay:0.1s} .delay-2{transition-delay:0.2s} .delay-3{transition-delay:0.3s}
+    footer { border-top: 1px solid var(--border); background: var(--cream); }
+  </style>
 </head>
 <body>
-
-  <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
+  <nav class="navbar navbar-expand-lg sticky-top">
     <div class="container">
-      <a class="navbar-brand fw-bold" href="index.html">R R K<span class="text-primary">.</span></a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain">
-        <span class="navbar-toggler-icon"></span>
-      </button>
+      <a class="navbar-brand fw-bold" href="index.html">R R K<span style="color:var(--yellow-mid);">.</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMain"><span class="navbar-toggler-icon"></span></button>
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center gap-1">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
           <li class="nav-item"><a class="nav-link active" href="education.html">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta ms-2" href="contact.html">Let's Talk</a></li>
         </ul>
       </div>
     </div>
   </nav>
 
-  <main class="container py-5">
-    <h2 class="fw-bold reveal">Education</h2>
-    <p class="text-muted mb-5 reveal">
-      Academic background in Computer Science from the US and India,
-      with a strong foundation in algorithms, security, ML, and full-stack development.
-    </p>
+  <div class="page-hero reveal">
+    <h1>Education & <span>Certifications</span></h1>
+    <p>Academic background in Computer Science from the US and India, with a strong foundation in algorithms, security, ML, and full-stack development.</p>
+  </div>
 
-    <div class="timeline mt-4">
-
-      <!-- MASTERS -->
-      <div class="timeline-item reveal">
-        <div class="card p-4 mb-4">
-          <div class="d-flex align-items-start gap-3">
-            <div class="text-primary mt-1 flex-shrink-0">
-              <i class="fa-solid fa-graduation-cap fa-2x"></i>
-            </div>
-            <div class="w-100">
-              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1">
-                <h5 class="fw-bold mb-0">University of Houston – Clear Lake</h5>
-                <span class="badge bg-primary">USA</span>
-              </div>
-              <p class="mb-1 fs-6">
-                <strong>Master of Science</strong> — Computer Science
-              </p>
-              <p class="text-muted mb-3">
-                <i class="fa-regular fa-calendar me-1"></i> Jan 2022 – Dec 2023 &nbsp;|&nbsp;
-                <i class="fa-solid fa-location-dot me-1"></i> Houston, TX
-              </p>
-
-              <h6 class="fw-semibold mb-2">
-                <i class="fa-solid fa-book-open text-primary me-2"></i>Coursework
-              </h6>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-light text-dark border">Research Methods in Computer Science</span>
-                <span class="badge bg-light text-dark border">Design & Analysis of Algorithms</span>
-                <span class="badge bg-light text-dark border">Machine Learning</span>
-                <span class="badge bg-light text-dark border">Network Security</span>
-                <span class="badge bg-light text-dark border">Computer Security & Cryptography</span>
-                <span class="badge bg-light text-dark border">Big Data Analytics</span>
-              </div>
-            </div>
-          </div>
+  <div class="edu-wrap">
+    <div class="section-label reveal"><div class="label-icon">🎓</div>Academic Background</div>
+    <div class="edu-timeline">
+      <div class="edu-card reveal delay-1">
+        <div class="edu-dot"></div>
+        <div class="edu-card-top">
+          <div class="edu-school">University of Houston – Clear Lake</div>
+          <span class="edu-country-badge badge-usa">🇺🇸 USA</span>
+        </div>
+        <div class="edu-degree">Master of Science — Computer Science</div>
+        <div class="edu-meta">
+          <span><i class="fa-regular fa-calendar"></i> Jan 2022 – Dec 2023</span>
+          <span><i class="fa-solid fa-location-dot"></i> Houston, TX</span>
+        </div>
+        <div class="edu-highlight"><i class="fa-solid fa-star"></i>Focused on AI, security, and scalable systems — directly applied to real-world projects</div>
+        <div class="coursework-label"><i class="fa-solid fa-book-open"></i> Coursework</div>
+        <div class="course-chips">
+          <span class="course-chip">Research Methods in CS</span><span class="course-chip">Design & Analysis of Algorithms</span><span class="course-chip">Machine Learning</span><span class="course-chip">Network Security</span><span class="course-chip">Computer Security & Cryptography</span><span class="course-chip">Big Data Analytics</span>
         </div>
       </div>
-
-      <!-- BACHELORS -->
-      <div class="timeline-item reveal">
-        <div class="card p-4 mb-4">
-          <div class="d-flex align-items-start gap-3">
-            <div class="text-warning mt-1 flex-shrink-0">
-              <i class="fa-solid fa-graduation-cap fa-2x"></i>
-            </div>
-            <div class="w-100">
-              <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 mb-1">
-                <h5 class="fw-bold mb-0">Jawaharlal Nehru Technological University</h5>
-                <span class="badge bg-warning text-dark">India</span>
-              </div>
-              <p class="mb-1 fs-6">
-                <strong>Bachelor of Technology</strong> — Computer Science & Engineering
-              </p>
-              <p class="text-muted mb-3">
-                <i class="fa-regular fa-calendar me-1"></i> Aug 2017 – Jul 2021 &nbsp;|&nbsp;
-                <i class="fa-solid fa-location-dot me-1"></i> India
-              </p>
-
-              <h6 class="fw-semibold mb-2">
-                <i class="fa-solid fa-book-open text-warning me-2"></i>Coursework
-              </h6>
-              <div class="d-flex flex-wrap gap-2">
-                <span class="badge bg-light text-dark border">Data Structures</span>
-                <span class="badge bg-light text-dark border">Object Oriented Programming</span>
-                <span class="badge bg-light text-dark border">Software Engineering</span>
-                <span class="badge bg-light text-dark border">Design & Analysis of Algorithms</span>
-                <span class="badge bg-light text-dark border">Web Development</span>
-                <span class="badge bg-light text-dark border">Data Mining</span>
-                <span class="badge bg-light text-dark border">Cloud Computing</span>
-                <span class="badge bg-light text-dark border">Mathematics</span>
-              </div>
-            </div>
-          </div>
+      <div class="edu-card reveal delay-2">
+        <div class="edu-dot"></div>
+        <div class="edu-card-top">
+          <div class="edu-school">Jawaharlal Nehru Technological University</div>
+          <span class="edu-country-badge badge-india">🇮🇳 India</span>
+        </div>
+        <div class="edu-degree">Bachelor of Technology — Computer Science & Engineering</div>
+        <div class="edu-meta">
+          <span><i class="fa-regular fa-calendar"></i> Aug 2017 – Jul 2021</span>
+          <span><i class="fa-solid fa-location-dot"></i> India</span>
+        </div>
+        <div class="edu-highlight"><i class="fa-solid fa-star"></i>Built core CS fundamentals — from data structures and OOP to cloud computing and web development</div>
+        <div class="coursework-label"><i class="fa-solid fa-book-open"></i> Coursework</div>
+        <div class="course-chips">
+          <span class="course-chip">Data Structures</span><span class="course-chip">Object Oriented Programming</span><span class="course-chip">Software Engineering</span><span class="course-chip">Design & Analysis of Algorithms</span><span class="course-chip">Web Development</span><span class="course-chip">Data Mining</span><span class="course-chip">Cloud Computing</span><span class="course-chip">Mathematics</span>
         </div>
       </div>
-
     </div>
 
-    <!-- CERTIFICATIONS -->
-    <h4 class="fw-bold mt-5 mb-4 reveal">
-      <i class="fa-solid fa-certificate text-primary me-2"></i>Certifications
-    </h4>
-    <div class="row g-3">
-
-      <!-- Meta Front-End Developer — NEW -->
-      <div class="col-md-6 reveal">
-        <div class="card p-3 border-primary">
-          <div class="d-flex align-items-center gap-3">
-            <div class="text-primary flex-shrink-0">
-              <i class="fa-brands fa-meta fa-2x"></i>
-            </div>
-            <div>
-              <p class="mb-0 fw-semibold">Meta Front-End Developer</p>
-              <p class="mb-0 text-muted small">Meta (Facebook) · Coursera</p>
-              <span class="badge bg-primary mt-1">New</span>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Accenture -->
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <div class="d-flex align-items-center gap-3">
-            <div class="text-primary flex-shrink-0">
-              <i class="fa-solid fa-award fa-2x"></i>
-            </div>
-            <div>
-              <p class="mb-0 fw-semibold">Data Analytics and Visualization</p>
-              <p class="mb-0 text-muted small">Accenture</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Udemy Python -->
-      <div class="col-md-6 reveal">
-        <div class="card p-3">
-          <div class="d-flex align-items-center gap-3">
-            <div class="text-warning flex-shrink-0">
-              <i class="fa-brands fa-python fa-2x"></i>
-            </div>
-            <div>
-              <p class="mb-0 fw-semibold">100 Days of Code: Complete Python Pro Bootcamp</p>
-              <p class="mb-0 text-muted small">Udemy</p>
-            </div>
-          </div>
-        </div>
-      </div>
-
+    <div class="section-label reveal" style="margin-top:52px;"><div class="label-icon">🏅</div>Certifications</div>
+    <div class="cert-grid">
+      <div class="cert-card reveal delay-1"><div class="cert-icon-wrap">🏆</div><div><div class="cert-name">Meta Front-End Developer</div><div class="cert-issuer">Meta (Facebook) · Coursera</div><div class="cert-new">New</div></div></div>
+      <div class="cert-card reveal delay-2"><div class="cert-icon-wrap">📊</div><div><div class="cert-name">Data Analytics and Visualization</div><div class="cert-issuer">Accenture</div></div></div>
+      <div class="cert-card reveal delay-3"><div class="cert-icon-wrap">🐍</div><div><div class="cert-name">100 Days of Code: Python Pro Bootcamp</div><div class="cert-issuer">Udemy</div></div></div>
     </div>
-
-  </main>
+  </div>
 
   <footer class="py-4 text-center">
-    <div class="container">
-      <small>© 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small>
-    </div>
+    <div class="container"><small style="color:var(--soft);">&copy; 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small></div>
   </footer>
-
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    const obs = new IntersectionObserver(entries => { entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }); }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => obs.observe(el));
+  </script>
   <script src="js/script.js"></script>
 </body>
 </html>
