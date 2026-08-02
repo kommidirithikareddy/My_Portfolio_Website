@@ -45,12 +45,17 @@ body {
 .social a {
   color: #111;
   margin-right: 12px;
+  text-decoration: none;
   transition: transform 0.2s ease, color 0.2s ease;
 }
 
 .social a:hover {
   transform: translateY(-4px);
   color: var(--accent);
+}
+
+.social a .fa-phone {
+  font-size: 1.7em;
 }
 
 

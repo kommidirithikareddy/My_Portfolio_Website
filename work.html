@@ -9,6 +9,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.ico">
   <style>
+    body { background: #fffdf0; }
     .project-card { transition: all 0.3s ease-in-out; }
     .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
     .project-tech { font-size: 0.9rem; color: #0d6efd; }
@@ -23,7 +24,6 @@
   </style>
 </head>
 <body>
-
   <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">R R K<span class="text-primary">.</span></a>
@@ -46,13 +46,26 @@
   <main class="container py-5">
     <h2 class="fw-bold mb-4 reveal">Work Experience</h2>
 
-    <!-- Versa Networks -->
+    <!-- Arena -->
     <div class="card p-3 mb-4 reveal border-primary">
       <div class="d-flex align-items-center gap-2 mb-1">
-        <h5 class="mb-0">Versa Networks, USA — Software Engineer Intern</h5>
+        <h5 class="mb-0">Arena — AI Engineer</h5>
         <span class="badge bg-primary badge-new">Latest</span>
       </div>
-      <p class="text-muted">Jan 2026 – Mar 2026</p>
+      <p class="text-muted">Mar 2026 – Present · Cupertino, CA</p>
+      <ul>
+        <li>Engineered 3+ production-grade AI product features spanning React, TypeScript, REST API integration, and backend AI pipeline design, powering workflows used across 5+ cross-functional teams.</li>
+        <li>Worked on LangSmith for LLM tracing, observability, and evaluation, reducing debugging time by ~30% and enabling systematic latency monitoring and prompt improvement across AI workflows.</li>
+        <li>Architected context engineering and AI prompting strategies — crafting structured prompts, managing context windows, and optimizing LLM instructions to maximize output quality and consistency across production pipelines.</li>
+        <li>Built user-facing interfaces for voice and video generation features, integrating multimodal AI capabilities into core product workflows.</li>
+        <li>Developed AI agent workflow features enabling automated, multi-step task execution within the product experience.</li>
+      </ul>
+    </div>
+
+    <!-- Versa Networks -->
+    <div class="card p-3 mb-4 reveal">
+      <h5 class="mb-0">Versa Networks — Software Engineer</h5>
+      <p class="text-muted">Jan 2026 – Mar 2026 · San Jose, CA</p>
       <ul>
         <li>Built real-time monitoring dashboards using React and TypeScript displaying live system metrics.</li>
         <li>Developed interactive UI components including charts, tables, and status indicators for operational analytics.</li>
@@ -69,15 +82,12 @@
 
     <!-- Consuy -->
     <div class="card p-3 mb-4 reveal">
-      <h5>Consuy, USA — Software Engineer</h5>
-      <p class="text-muted">Dec 2023 – Nov 2025</p>
+      <h5>Consuy — Software Engineer</h5>
+      <p class="text-muted">Dec 2023 – Dec 2025</p>
       <ul>
-        <li>Developed responsive web interfaces using React, Angular, HTML, CSS, JavaScript, and Bootstrap.</li>
-        <li>Integrated RESTful APIs with Python/Node.js backend services to deliver dynamic functionality.</li>
-        <li>Built reusable UI components and optimized application performance for faster load times.</li>
-        <li>Created interactive dashboards and visualizations using Power BI, Tableau, and ggplot2 for stakeholder reporting.</li>
-        <li>Collaborated in Agile teams, participated in code reviews, and managed version control with Git/GitHub.</li>
-        <li>Automated deployment and CI/CD workflows using Azure DevOps and Dockerized microservices.</li>
+        <li>Architected scalable web applications using React, TypeScript, Python, and SQL; re-engineered legacy UI/UX and modernized component architecture, improving performance by ~25% through rendering optimization.</li>
+        <li>Integrated frontend applications with REST API-based backend services and automated SQL-driven data pipelines (PostgreSQL/MySQL) to deliver accurate, near real-time analytics and insights for 100+ active users.</li>
+        <li>Led code reviews, enforced unit testing standards, and shipped dynamic UI components and reporting dashboards handling large datasets with downloadable CSV outputs via Python and SQL-backed APIs.</li>
       </ul>
     </div>
 
@@ -89,12 +99,8 @@
         <!-- LexAI -->
         <div class="col-md-6 col-lg-4">
           <div class="card project-card h-100 p-3 border-primary">
-            <img
-              src="assets/images/lexai-screenshot.png"
-              alt="LexAI Screenshot"
-              class="project-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="assets/images/lexai-screenshot.png" alt="LexAI Screenshot" class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
             <div class="project-img-placeholder" style="display:none;">⚖️</div>
             <div class="d-flex align-items-center gap-2 mb-1">
               <h5 class="fw-bold mb-0">⚖️ LexAI — AI Legal Clause Analyzer</h5>
@@ -104,8 +110,7 @@
             <p>AI-powered web app that analyzes legal clauses for risks, missing terms, and provides plain-English summaries. Features color-coded risk levels, recommendations, and session history.</p>
             <p class="project-tech"><strong>Tech:</strong> React, TypeScript, Tailwind CSS, AI API, Vite</p>
             <div class="mt-auto pt-2">
-              <a href="https://github.com/kommidirithikareddy/ai-legal-clause-analyzer"
-                target="_blank" class="btn btn-sm btn-outline-primary">
+              <a href="https://github.com/kommidirithikareddy/ai-legal-clause-analyzer" target="_blank" class="btn btn-sm btn-outline-primary">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>
@@ -115,12 +120,8 @@
         <!-- DocChat -->
         <div class="col-md-6 col-lg-4">
           <div class="card project-card h-100 p-3 border-primary">
-            <img
-              src="assets/images/docchat-screenshot.png"
-              alt="DocChat Screenshot"
-              class="project-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="assets/images/docchat-screenshot.png" alt="DocChat Screenshot" class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
             <div class="project-img-placeholder" style="display:none;">💬</div>
             <div class="d-flex align-items-center gap-2 mb-1">
               <h5 class="fw-bold mb-0">💬 DocChat — AI Document Q&A</h5>
@@ -130,8 +131,7 @@
             <p>Upload any PDF or text file and have a full conversation with it using AI. Features multi-turn chat, suggested questions, and client-side PDF extraction — no backend needed.</p>
             <p class="project-tech"><strong>Tech:</strong> React, TypeScript, Tailwind CSS, AI API, PDF.js</p>
             <div class="mt-auto pt-2">
-              <a href="https://github.com/kommidirithikareddy/AI-document-question-and-answers"
-                target="_blank" class="btn btn-sm btn-outline-primary">
+              <a href="https://github.com/kommidirithikareddy/AI-document-question-and-answers" target="_blank" class="btn btn-sm btn-outline-primary">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>
@@ -141,12 +141,8 @@
         <!-- NewsAI -->
         <div class="col-md-6 col-lg-4">
           <div class="card project-card h-100 p-3 border-primary">
-            <img
-              src="assets/images/newsai-screenshot.png"
-              alt="NewsAI Screenshot"
-              class="project-img"
-              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-            />
+            <img src="assets/images/newsai-screenshot.png" alt="NewsAI Screenshot" class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
             <div class="project-img-placeholder" style="display:none;">📰</div>
             <div class="d-flex align-items-center gap-2 mb-1">
               <h5 class="fw-bold mb-0">📰 NewsAI — Svelte AI Dashboard</h5>
@@ -156,8 +152,82 @@
             <p>SvelteKit dashboard with live news, per-article AI summaries, and cross-article trend analysis. Features category filtering, real-time search, and reactive Svelte stores.</p>
             <p class="project-tech"><strong>Tech:</strong> SvelteKit, TypeScript, Tailwind CSS, AI API, GNews API</p>
             <div class="mt-auto pt-2">
-              <a href="https://github.com/kommidirithikareddy/News-AI-Dashboard"
-                target="_blank" class="btn btn-sm btn-outline-primary">
+              <a href="https://github.com/kommidirithikareddy/News-AI-Dashboard" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Story Weaver -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 p-3 border-primary">
+            <img src="https://github.com/kommidirithikareddy/story-weaver/raw/main/screenshot.png"
+              alt="Story Weaver Screenshot" class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"/>
+            <div class="project-img-placeholder" style="display:none;">📖</div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">📖 Story Weaver — AI Collaborative Fiction</h5>
+              <span class="badge bg-primary badge-new">New</span>
+            </div>
+            <p class="text-muted mb-1">2026</p>
+            <p>AI-powered collaborative storytelling app where you co-write branching narratives with an LLM. Features genre remix, auto character tracking, mood indicator, export to Markdown, and undo turns.</p>
+            <p class="project-tech"><strong>Tech:</strong> React, TypeScript, Vite, Groq API (Llama 3.3 70B), CSS</p>
+            <div class="mt-auto pt-2">
+              <a href="https://github.com/kommidirithikareddy/story-weaver" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Calc App -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 p-3 border-primary">
+            <img
+              src="https://api.screenshotone.com/take?url=https://calc-calculate-better.vercel.app&viewport_width=1280&viewport_height=800&device_scale_factor=1&format=jpg&image_quality=80&block_ads=true&block_cookie_banners=true&block_trackers=true&delay=2&timeout=60"
+              alt="Calc App Screenshot"
+              class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="project-img-placeholder" style="display:none; background: linear-gradient(135deg,#fef9c3,#fde68a);">🧮</div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">🧮 Calc App</h5>
+              <span class="badge bg-primary badge-new">New</span>
+            </div>
+            <p class="text-muted mb-1">2026</p>
+            <p>Clean, responsive calculator app built with React + Vite and styled with SCSS and Tailwind CSS. Deployed live on Vercel with a polished, minimal UI.</p>
+            <p class="project-tech"><strong>Tech:</strong> React, Vite, SCSS, Tailwind CSS, JavaScript</p>
+            <div class="mt-auto pt-2 d-flex gap-2">
+              <a href="https://github.com/kommidirithikareddy/Calc" target="_blank" class="btn btn-sm btn-outline-primary">
+                <i class="fa-brands fa-github"></i> GitHub
+              </a>
+              <a href="https://calc-calculate-better.vercel.app/" target="_blank" class="btn btn-sm btn-primary">
+                <i class="fa-solid fa-arrow-up-right-from-square"></i> Live Demo
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Brand Studio -->
+        <div class="col-md-6 col-lg-4">
+          <div class="card project-card h-100 p-3 border-primary">
+            <img
+              src="assets/images/brand-studio-screenshot.png"
+              alt="Brand Studio Screenshot"
+              class="project-img"
+              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
+            />
+            <div class="project-img-placeholder" style="display:none; background: linear-gradient(135deg,#fce7f3,#ede9fe);">🎨</div>
+            <div class="d-flex align-items-center gap-2 mb-1">
+              <h5 class="fw-bold mb-0">🎨 Brand Studio</h5>
+              <span class="badge bg-primary badge-new">New</span>
+            </div>
+            <p class="text-muted mb-1">2026</p>
+            <p>A brand identity tool built as a single-file HTML app. Generate color palettes, typography pairings, and visual identity assets — all in the browser with zero dependencies.</p>
+            <p class="project-tech"><strong>Tech:</strong> HTML, CSS, JavaScript</p>
+            <div class="mt-auto pt-2">
+              <a href="https://github.com/kommidirithikareddy/brand-studio" target="_blank" class="btn btn-sm btn-outline-primary">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>
@@ -184,8 +254,7 @@
             <p>Developed a web-based pharmacy inventory and transaction management system with optimized SQL queries for faster performance and ensured strong data integrity.</p>
             <p class="project-tech"><strong>Tech:</strong> MySQL, Python, VS Code</p>
             <div class="mt-auto pt-2">
-              <a href="https://github.com/kommidirithikareddy/PMS"
-                target="_blank" class="btn btn-sm btn-outline-primary">
+              <a href="https://github.com/kommidirithikareddy/PMS" target="_blank" class="btn btn-sm btn-outline-primary">
                 <i class="fa-brands fa-github"></i> GitHub
               </a>
             </div>

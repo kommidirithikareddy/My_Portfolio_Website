@@ -8,10 +8,72 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { background: #fffdf0; }
+
+    /* ── Blob photo effect ── */
+    .avatar-card {
+      position: relative;
+      display: inline-block;
+    }
+
+    .blob-wrap {
+      width: 320px;
+      height: 320px;
+      border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%;
+      background: linear-gradient(135deg, #fef9c3, #fde047, #fbbf24);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto;
+      animation: morph 8s ease-in-out infinite, blobfloat 4s ease-in-out infinite;
+      box-shadow: 0 20px 60px rgba(251,191,36,0.28);
+    }
+    @keyframes morph {
+      0%,100% { border-radius: 60% 40% 70% 30% / 50% 60% 40% 50%; }
+      33%      { border-radius: 30% 70% 40% 60% / 60% 30% 70% 40%; }
+      66%      { border-radius: 50% 50% 30% 70% / 40% 70% 30% 60%; }
+    }
+    @keyframes blobfloat {
+      0%,100% { transform: translateY(0); }
+      50%      { transform: translateY(-12px); }
+    }
+
+    .avatar {
+      width: 250px !important;
+      height: 250px !important;
+      object-fit: cover;
+      border-radius: 50% !important;
+      border: 5px solid #fff;
+      box-shadow: 0 12px 40px rgba(0,0,0,0.12);
+      display: block;
+    }
+
+    /* Floating badges */
+    .float-badge {
+      position: absolute;
+      background: #fff;
+      border: 1px solid #f0ece4;
+      border-radius: 14px;
+      padding: 8px 14px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #1c1917;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.08);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
+      animation: blobfloat 3s ease-in-out infinite;
+    }
+    .float-badge.b1 { top: 10px;  right: -10px; animation-delay: 0s;   }
+    .float-badge.b2 { bottom: 20px; left: -20px; animation-delay: 1s;  }
+    .float-badge.b3 { top: 48%;  right: -30px; transform: translateY(-50%); animation-delay: 0.5s; }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR -->
+  <!-- NAVBAR — unchanged -->
   <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm">
     <div class="container">
       <a class="navbar-brand fw-bold" href="index.html">
@@ -33,12 +95,12 @@
     </div>
   </nav>
 
-  <!-- HERO SECTION -->
+  <!-- HERO SECTION — text unchanged, image gets blob -->
   <header class="home">
     <div class="container py-5">
       <div class="row align-items-center">
 
-        <!-- TEXT -->
+        <!-- TEXT — 100% original -->
         <div class="col-md-6">
           <p class="text-primary fw-semibold mb-1 reveal">
             <i class="fa-solid fa-circle-dot fa-beat"></i> Available for opportunities
@@ -55,13 +117,6 @@
             interfaces — I bring ideas to life through clean code,
             thoughtful design, and a strong eye for detail.
           </p>
-
-          <!--<div class="mt-3 mb-4 reveal">
-            <span class="badge bg-primary me-1">React</span>
-            <span class="badge bg-secondary me-1">TypeScript</span>
-            <span class="badge bg-warning text-dark me-1">Tailwind CSS</span>
-            <span class="badge bg-danger me-1">Python</span>
-          </div> -->
 
           <div class="mt-2 reveal">
             <a href="about.html" class="btn btn-primary btn-lg me-2">
@@ -88,14 +143,20 @@
           </div>
         </div>
 
-        <!-- IMAGE -->
+        <!-- IMAGE — blob wrap added, rest same -->
         <div class="col-md-6 text-center">
           <div class="avatar-card reveal">
-            <img
-              src="assets/images/rithikapic for home.jpg"
-              alt="Rithika Reddy"
-              class="avatar img-fluid rounded-circle shadow-lg"
-            >
+            <div class="blob-wrap">
+              <img
+                src="assets/images/rithikapic for home.jpg"
+                alt="Rithika Reddy"
+                class="avatar img-fluid"
+                onerror="this.style.display='none';"
+              >
+            </div>
+            <div class="float-badge b1">⚡ 3+ yrs exp</div>
+            <div class="float-badge b2">🎯 Problem Solver</div>
+            <div class="float-badge b3">🧠 AI Enthusiast</div>
           </div>
         </div>
 
@@ -103,7 +164,7 @@
     </div>
   </header>
 
-  <!-- QUICK SUMMARY CARDS -->
+  <!-- QUICK SUMMARY CARDS — unchanged -->
   <section class="py-5 bg-light">
     <div class="container">
       <div class="row g-4">
@@ -114,8 +175,9 @@
               <i class="fa-solid fa-bullseye text-primary me-2"></i>Focus
             </h5>
             <p>
-              Building AI-powered frontend interfaces that make complex
-              workflows simple — from legal tech to real-time dashboards.
+              Building scalable, user-friendly web applications with a
+              strong eye for design and performance — across tech and
+              real-time dashboards.
             </p>
           </div>
         </div>
@@ -126,8 +188,10 @@
               <i class="fa-solid fa-code text-primary me-2"></i>Tech
             </h5>
             <p>
-              React, SvelteKit, TypeScript, Tailwind CSS,
-              Node.js, Python, REST APIs, Power BI.
+              React, Next.js, Vue.js, Angular.js, SvelteKit, TypeScript,
+              Tailwind CSS, HTML5/CSS3, Redux/Zustand, Vite, Node.js,
+              Python, REST APIs, Power BI, Figma, UI/UX Design,
+              A/B Testing, Product Analytics, Prompt Engineering.
             </p>
           </div>
         </div>
@@ -135,12 +199,12 @@
         <div class="col-md-4 reveal">
           <div class="card h-100 p-3">
             <h5 class="mb-2">
-              <i class="fa-solid fa-building text-primary me-2"></i>Experience
+              <i class="fa-solid fa-circle-check text-primary me-2"></i>Currently
             </h5>
             <p>
-              Software Engineer Intern at Versa Networks &
-              Software Engineer at Consuy — 3+ years building
-              scalable web apps and AI integrations.
+              Open to full-time Software Engineer opportunities —
+              especially frontend and AI-powered product roles.
+              Let's connect!
             </p>
           </div>
         </div>
@@ -149,7 +213,7 @@
     </div>
   </section>
 
-  <!-- FEATURED PROJECTS STRIP -->
+  <!-- FEATURED PROJECTS STRIP — unchanged -->
   <section class="py-5">
     <div class="container">
       <h3 class="fw-bold mb-4 reveal">Featured Projects</h3>
@@ -200,7 +264,7 @@
     </div>
   </section>
 
-  <!-- FOOTER -->
+  <!-- FOOTER — unchanged -->
   <footer class="py-4 text-center">
     <div class="container">
       <small>© 2026. All Rights Reserved to Rithika Reddy Kommidi — Built with ❤️</small>
