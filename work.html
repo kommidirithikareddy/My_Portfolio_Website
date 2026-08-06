@@ -4,12 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Work — Rithika Reddy</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/theme.css">
   <link rel="icon" href="assets/favicon.ico">
   <style>
     body { background: #fffdf0; }
+
+    /* ── Nav CTA pill ── */
+    .nav-cta { background: #fde047; color: #1c1917 !important; border-radius: 8px; padding: 6px 16px !important; font-weight: 700 !important; }
+    .nav-cta:hover { background: #f59e0b !important; color: #1c1917 !important; }
+
     .project-card { transition: all 0.3s ease-in-out; }
     .project-card:hover { transform: translateY(-5px); box-shadow: 0 8px 20px rgba(0,0,0,0.15); }
     .project-tech { font-size: 0.9rem; color: #0d6efd; }
@@ -31,13 +44,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
           <li class="nav-item"><a class="nav-link active" href="work.html">Work</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta ms-2" href="contact.html">Let's Talk</a></li>
+          <li class="nav-item d-flex align-items-center">
+            <button id="theme-toggle" class="theme-toggle-btn ms-lg-2" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Toggle dark mode">
+              <span class="sun-icon"><span class="sun-rays"></span><span class="sun-core"></span></span>
+              <span class="moon-icon"><span class="moon-crescent"></span><span class="moon-cutout"></span></span>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -49,45 +68,63 @@
     <!-- Arena -->
     <div class="card p-3 mb-4 reveal border-primary">
       <div class="d-flex align-items-center gap-2 mb-1">
-        <h5 class="mb-0">Arena — AI Engineer</h5>
+        <h5 class="mb-0">Arena — Frontend AI Engineer</h5>
         <span class="badge bg-primary badge-new">Latest</span>
       </div>
       <p class="text-muted">Mar 2026 – Present · Cupertino, CA</p>
       <ul>
-        <li>Engineered 3+ production-grade AI product features spanning React, TypeScript, REST API integration, and backend AI pipeline design, powering workflows used across 5+ cross-functional teams.</li>
-        <li>Worked on LangSmith for LLM tracing, observability, and evaluation, reducing debugging time by ~30% and enabling systematic latency monitoring and prompt improvement across AI workflows.</li>
-        <li>Architected context engineering and AI prompting strategies — crafting structured prompts, managing context windows, and optimizing LLM instructions to maximize output quality and consistency across production pipelines.</li>
-        <li>Built user-facing interfaces for voice and video generation features, integrating multimodal AI capabilities into core product workflows.</li>
-        <li>Developed AI agent workflow features enabling automated, multi-step task execution within the product experience.</li>
+        <li>Engineered dynamic, responsive front-end applications using React 19, Next.js, TypeScript, and Redux Toolkit, delivering high-performing AI-powered product experiences.</li>
+        <li>Built the Video AI Studio interface, enabling users to generate, preview, and manage AI-generated video content through intuitive front-end workflows.</li>
+        <li>Developed interactive voice and video generation interfaces with real-time status updates, progress indicators, and skeleton loading states.</li>
+        <li>Integrated GraphQL APIs, REST APIs, and Supabase Functions to enable real-time communication between the UI and backend services.</li>
+        <li>Used LangSmith to monitor and evaluate AI-powered workflows integrated into front-end features, and leveraged GitHub Copilot, Cursor, and Claude Code to accelerate development.</li>
+        <li>Designed UI animations and micro-interactions using Framer Motion, and built a reusable component library with Tailwind CSS to maintain design consistency across applications.</li>
+        <li>Worked within a Turborepo monorepo using Yarn workspaces, maintaining multiple React applications with shared component and utility libraries.</li>
       </ul>
     </div>
 
     <!-- Versa Networks -->
     <div class="card p-3 mb-4 reveal">
-      <h5 class="mb-0">Versa Networks — Software Engineer</h5>
-      <p class="text-muted">Jan 2026 – Mar 2026 · San Jose, CA</p>
+      <h5 class="mb-0">Versa Networks — Software Engineer - Front End</h5>
+      <p class="text-muted">Jan 2025 – Mar 2026 · Santa Clara, CA</p>
       <ul>
-        <li>Built real-time monitoring dashboards using React and TypeScript displaying live system metrics.</li>
-        <li>Developed interactive UI components including charts, tables, and status indicators for operational analytics.</li>
-        <li>Designed and implemented a phased migration strategy, successfully completing three implementation phases with minimal system downtime.</li>
-        <li>Migrated legacy CSS styles to SCSS, improving modularity, maintainability, and scalability of UI components.</li>
-        <li>Implemented optimized state management for handling frequent API updates.</li>
-        <li>Created reusable UI components improving development efficiency and consistency.</li>
-        <li>Improved frontend performance by ~25% through rendering optimization and profiling.</li>
-        <li>Integrated REST APIs to deliver near real-time analytics data.</li>
-        <li>Contributed to scalable frontend architecture for monitoring systems.</li>
-        <li>Collaborated with product and UX teams to deliver data-driven features.</li>
+        <li>Migrated legacy Backbone.js modules to React.js as part of a broader frontend modernization initiative for enterprise networking dashboards.</li>
+        <li>Converted Backbone Views into reusable, functional React components using Hooks, custom hooks, and HOCs, and refactored core JavaScript modules to TypeScript.</li>
+        <li>Built and integrated analytics dashboards using AG Grid for dynamic, data-heavy tables with custom cell renderers and real-time data feeds.</li>
+        <li>Styled applications using SCSS/SASS and Material UI, and implemented responsive layouts with CSS Grid, Flexbox, and Bootstrap.</li>
+        <li>Managed application state using Redux Toolkit and React Query, and implemented JWT-based authentication and role-based access control.</li>
+        <li>Implemented E2E and unit testing using Cypress and Jest, and used Git and Azure DevOps for CI/CD deployments.</li>
       </ul>
     </div>
 
     <!-- Consuy -->
     <div class="card p-3 mb-4 reveal">
-      <h5>Consuy — Software Engineer</h5>
-      <p class="text-muted">Dec 2023 – Dec 2025</p>
+      <h5>Consuy — Software Engineer (Full Stack)</h5>
+      <p class="text-muted">Dec 2023 – Dec 2025 · Houston, TX</p>
       <ul>
-        <li>Architected scalable web applications using React, TypeScript, Python, and SQL; re-engineered legacy UI/UX and modernized component architecture, improving performance by ~25% through rendering optimization.</li>
-        <li>Integrated frontend applications with REST API-based backend services and automated SQL-driven data pipelines (PostgreSQL/MySQL) to deliver accurate, near real-time analytics and insights for 100+ active users.</li>
-        <li>Led code reviews, enforced unit testing standards, and shipped dynamic UI components and reporting dashboards handling large datasets with downloadable CSV outputs via Python and SQL-backed APIs.</li>
+        <li>Built scalable React.js and Next.js applications with server-side rendering (SSR) for improved SEO and performance.</li>
+        <li>Developed reusable component libraries adopted across multiple frontend teams, following consistent design system standards.</li>
+        <li>Integrated RESTful and GraphQL APIs (via Apollo Client) with Node.js/Express backend services and third-party APIs for real-time data sync.</li>
+        <li>Managed application state using Redux Toolkit and TanStack (React) Query, and built responsive, data-heavy dashboards using Material UI and Tailwind CSS.</li>
+        <li>Integrated frontend applications with PostgreSQL and MongoDB-backed APIs, implementing authentication and authorization flows using JWT and OAuth.</li>
+        <li>Participated in CI/CD pipelines using Azure DevOps and GitHub Actions, and wrote unit and integration tests using Jest and React Testing Library.</li>
+      </ul>
+    </div>
+
+    <!-- MLRITM -->
+    <div class="card p-3 mb-4 reveal">
+      <h5>MLRITM — UI Developer</h5>
+      <p class="text-muted">Feb 2021 – Jan 2022 · Hyderabad, India</p>
+      <ul>
+        <li>Developed responsive web pages and reusable UI components using HTML5, CSS3, JavaScript, and Bootstrap, implementing layouts with CSS Grid and Flexbox.</li>
+        <li>Consumed REST APIs using AJAX and JSON for dynamic content rendering, and used jQuery for DOM manipulation and interactive UI behavior.</li>
+        <li>Developed UI modules using AngularJS (1.x), including controllers, directives, filters, and services with two-way data binding for internal business applications.</li>
+        <li>Built production-grade UI features using AngularJS and modern JavaScript (ES6+), contributing to internal business applications used across multiple teams.</li>
+        <li>Collaborated on multi-module front-end features as part of a larger application, coordinating with other developers to deliver consistent, maintainable UI components.</li>
+        <li>Applied front-end architecture principles — component-based design, state management, and performance optimization — to build scalable, maintainable AngularJS modules.</li>
+        <li>Began working with React.js to build early component-based UI features for internal tools.</li>
+        <li>Translated Photoshop/Figma design assets into pixel-perfect, accessible HTML/CSS layouts, and conducted unit testing with Jasmine and Karma.</li>
+        <li>Logged and tracked defects in JIRA, working closely with QA through multiple test cycles to ensure release quality.</li>
       </ul>
     </div>
 
@@ -295,5 +332,6 @@
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
   <script src="js/script.js"></script>
+  <script src="js/theme.js"></script>
 </body>
 </html>

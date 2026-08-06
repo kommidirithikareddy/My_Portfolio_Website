@@ -4,9 +4,17 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About — Rithika Reddy</title>
+  <script>
+    (function () {
+      var t = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', t);
+    })();
+  </script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
   <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/theme.css">
   <link rel="icon" href="assets/favicon.ico">
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
 
@@ -42,6 +50,8 @@
     .navbar-brand { font-family: 'Playfair Display', serif; font-size: 1.3rem; }
     .nav-link { font-weight: 500; color: var(--mid) !important; transition: color 0.2s; }
     .nav-link:hover, .nav-link.active { color: var(--yellow-dark) !important; }
+    .nav-cta { background: var(--yellow); color: var(--dark) !important; border-radius: 8px; padding: 6px 16px !important; font-weight: 700 !important; }
+    .nav-cta:hover { background: var(--yellow-mid) !important; }
 
     /* ── Hero Section ── */
     .about-hero {
@@ -378,13 +388,19 @@
         <span class="navbar-toggler-icon"></span>
       </button>
       <div class="collapse navbar-collapse" id="navMain">
-        <ul class="navbar-nav ms-auto">
+        <ul class="navbar-nav ms-auto align-items-center">
           <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
           <li class="nav-item"><a class="nav-link active" href="about.html">About</a></li>
           <li class="nav-item"><a class="nav-link" href="skills.html">Skills</a></li>
           <li class="nav-item"><a class="nav-link" href="education.html">Education</a></li>
           <li class="nav-item"><a class="nav-link" href="work.html">Work</a></li>
-          <li class="nav-item"><a class="nav-link" href="contact.html">Contact</a></li>
+          <li class="nav-item"><a class="nav-link nav-cta ms-2" href="contact.html">Let's Talk</a></li>
+          <li class="nav-item d-flex align-items-center">
+            <button id="theme-toggle" class="theme-toggle-btn ms-lg-2" type="button" role="switch" aria-checked="false" aria-label="Toggle dark mode" title="Toggle dark mode">
+              <span class="sun-icon"><span class="sun-rays"></span><span class="sun-core"></span></span>
+              <span class="moon-icon"><span class="moon-crescent"></span><span class="moon-cutout"></span></span>
+            </button>
+          </li>
         </ul>
       </div>
     </div>
@@ -401,13 +417,13 @@
         </p>
         <h1>Rithika Reddy<br><span>Kommidi</span></h1>
         <p class="lead">
-          Software Engineer with 3+ years of experience building responsive, high-performance web applications
-          using React, SvelteKit, Angular, TypeScript, and Tailwind CSS. Currently an AI Engineer at
-          <strong>Arena</strong>, engineering production AI features — LangSmith observability, context engineering,
-          and AI agent workflows — across the full frontend stack. Previously a Software Engineer at
-          <strong>Versa Networks</strong> building real-time monitoring dashboards. Passionate about building
-          AI-powered products that solve real problems and crafting intuitive interfaces that make complex
-          workflows feel simple.
+          Frontend Engineer with 4+ years of experience building scalable, high-performance, AI-powered web
+          applications using React, Next.js, TypeScript, and Redux Toolkit. Currently a Frontend AI Engineer at
+          <strong>Arena</strong>, engineering production AI features — LangSmith observability, GraphQL/REST
+          integrations, and AI agent workflows — across the full frontend stack. Previously a Software Engineer
+          at <strong>Versa Networks</strong> modernizing enterprise dashboards from Backbone.js to React.
+          Passionate about building AI-powered products that solve real problems and crafting pixel-perfect,
+          accessible interfaces that make complex workflows feel simple.
         </p>
         <div style="display:flex; gap:12px; flex-wrap:wrap;">
           <a href="work.html" class="btn-primary-yellow">
@@ -425,7 +441,7 @@
       <div class="profile-card">
         <div class="profile-avatar">👩‍💻</div>
         <div class="profile-name">Rithika Reddy Kommidi</div>
-        <div class="profile-role">Software Engineer · AI & Frontend</div>
+        <div class="profile-role">Frontend AI Engineer</div>
         <div class="profile-badge">
           <div class="badge-dot"></div>
           Open to Work
@@ -433,7 +449,7 @@
         <div style="width:100%;">
           <div class="profile-info-row">
             <i class="fa-solid fa-envelope"></i>
-            <span>kommidirithikareddy@gmail.com</span>
+            <span>kommidirithikareddy1@gmail.com</span>
           </div>
           <div class="profile-info-row">
             <i class="fa-solid fa-phone"></i>
@@ -441,7 +457,7 @@
           </div>
           <div class="profile-info-row">
             <i class="fa-solid fa-clock"></i>
-            <span>3+ years experience</span>
+            <span>4+ years experience</span>
           </div>
           <div class="profile-info-row">
             <i class="fa-brands fa-github"></i>
@@ -458,7 +474,7 @@
   <!-- ── Stats ── -->
   <div class="stats-row">
     <div class="stat-card reveal delay-1">
-      <div class="stat-num" data-target="3" data-suffix="+">0</div>
+      <div class="stat-num" data-target="4" data-suffix="+">0</div>
       <div class="stat-label">Years Experience</div>
     </div>
     <div class="stat-card reveal delay-2">
@@ -489,32 +505,32 @@
           <div class="timeline-dot"></div>
           <div class="timeline-date">Mar 2026 – Present</div>
           <div class="timeline-title">
-            AI Engineer — Arena
+            Frontend AI Engineer — Arena
             <span class="timeline-badge">Latest</span>
           </div>
           <div class="timeline-sub">Cupertino, CA</div>
-          <div class="timeline-desc">Engineering production AI product features across React & TypeScript, with LangSmith for LLM tracing/observability and context engineering for AI agent workflows — powering tools used across 5+ cross-functional teams.</div>
+          <div class="timeline-desc">Building the Video AI Studio and other AI-powered product features with React 19, Next.js, TypeScript, and Redux Toolkit — integrating GraphQL/REST APIs and Supabase Functions, with LangSmith for LLM tracing/observability across AI agent workflows.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">Jan 2026 – Mar 2026</div>
-          <div class="timeline-title">Software Engineer — Versa Networks</div>
-          <div class="timeline-sub">San Jose, CA</div>
-          <div class="timeline-desc">Built real-time monitoring dashboards with React & TypeScript. Improved data rendering reliability and responsiveness by ~20% and integrated REST APIs for live analytics.</div>
+          <div class="timeline-date">Jan 2025 – Mar 2026</div>
+          <div class="timeline-title">Software Engineer - Front End — Versa Networks</div>
+          <div class="timeline-sub">Santa Clara, CA</div>
+          <div class="timeline-desc">Led the migration of legacy Backbone.js modules to React and TypeScript for enterprise networking dashboards, building AG Grid-powered analytics views and real-time data feeds for network monitoring.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
           <div class="timeline-date">Dec 2023 – Dec 2025</div>
-          <div class="timeline-title">Software Engineer — Consuy</div>
-          <div class="timeline-sub">TX, USA</div>
-          <div class="timeline-desc">Re-engineered legacy UI/UX and modernized component architecture, improving performance by ~25%. Integrated REST APIs with automated SQL-driven data pipelines (PostgreSQL/MySQL) for 100+ active users.</div>
+          <div class="timeline-title">Software Engineer (Full Stack) — Consuy</div>
+          <div class="timeline-sub">Houston, TX</div>
+          <div class="timeline-desc">Built scalable React and Next.js applications with server-side rendering, integrating REST and GraphQL (Apollo Client) APIs with Node.js/Express services and PostgreSQL/MongoDB for real-time data sync.</div>
         </div>
         <div class="timeline-item">
           <div class="timeline-dot"></div>
-          <div class="timeline-date">2021</div>
-          <div class="timeline-title">CS Graduate</div>
-          <div class="timeline-sub">Started full-stack & AI journey</div>
-          <div class="timeline-desc">Began exploring full-stack web development, machine learning, and building real-world projects from pharmacy systems to cybercrime prevention tools.</div>
+          <div class="timeline-date">Feb 2021 – Jan 2022</div>
+          <div class="timeline-title">UI Developer — MLRITM</div>
+          <div class="timeline-sub">Hyderabad, India</div>
+          <div class="timeline-desc">Started my career building responsive UI with HTML5, CSS3, JavaScript, Bootstrap, and AngularJS — consuming REST APIs, translating Figma/Photoshop designs into pixel-perfect layouts, and taking early steps into React.</div>
         </div>
       </div>
     </div>
@@ -640,5 +656,6 @@
 
   </script>
   <script src="js/script.js"></script>
+  <script src="js/theme.js"></script>
 </body>
 </html>

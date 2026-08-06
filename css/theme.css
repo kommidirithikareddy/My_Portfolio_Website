@@ -1,0 +1,226 @@
+/* ===============================
+   Dark Mode Theme
+   Toggled via html[data-theme="dark"], set by js/theme.js
+================================ */
+
+/* Smooth transitions once JS has initialized the theme (avoids flash on load) */
+html.theme-ready body,
+html.theme-ready .navbar,
+html.theme-ready .card,
+html.theme-ready .glass-card,
+html.theme-ready .skill-card,
+html.theme-ready .edu-card,
+html.theme-ready .stat-card,
+html.theme-ready .fact-item,
+html.theme-ready .cert-card,
+html.theme-ready .info-item,
+html.theme-ready .profile-card,
+html.theme-ready .form-control,
+html.theme-ready .form-select,
+html.theme-ready .float-badge {
+  transition: background-color 0.3s ease, color 0.3s ease,
+              border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Theme toggle — hand-drawn sunburst that fades into a crescent moon with stars */
+.theme-toggle-btn {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1.5px solid rgba(0, 0, 0, 0.12);
+  background: #fffdf0;
+  cursor: pointer;
+  padding: 0;
+  flex-shrink: 0;
+  overflow: hidden;
+  transition: background-color 0.4s ease, border-color 0.4s ease;
+}
+.theme-toggle-btn:hover { border-color: rgba(0, 0, 0, 0.25); transform: scale(1.08); }
+.theme-toggle-btn:active { transform: scale(0.86); }
+
+/* Icon groups cross-fade with a scale + rotate pop when the theme flips */
+.theme-toggle-btn .sun-icon,
+.theme-toggle-btn .moon-icon {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.theme-toggle-btn .moon-icon {
+  opacity: 0;
+  transform: scale(0.3) rotate(-75deg);
+}
+
+@keyframes theme-toggle-spin {
+  to { transform: rotate(360deg); }
+}
+.theme-toggle-btn .sun-rays {
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: repeating-conic-gradient(from 0deg, #f59e0b 0deg 4deg, transparent 4deg 45deg);
+  animation: theme-toggle-spin 16s linear infinite;
+}
+.theme-toggle-btn .sun-core {
+  position: absolute;
+  top: 10.5px;
+  left: 10.5px;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  background: #fde047;
+}
+.theme-toggle-btn .moon-crescent {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #dbeafe;
+  top: 5px;
+  left: 4px;
+}
+.theme-toggle-btn .moon-cutout {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: #0b1a2b;
+  top: 3px;
+  left: 9px;
+}
+html[data-theme="dark"] .theme-toggle-btn {
+  background: #0b1a2b;
+  border-color: rgba(255, 255, 255, 0.18);
+}
+html[data-theme="dark"] .theme-toggle-btn:hover { border-color: rgba(255, 255, 255, 0.32); }
+html[data-theme="dark"] .theme-toggle-btn .sun-icon {
+  opacity: 0;
+  transform: scale(0.3) rotate(75deg);
+}
+html[data-theme="dark"] .theme-toggle-btn .moon-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* ===============================
+   Pages built on custom CSS variables
+   (about.html, skills.html, education.html, contact.html)
+================================ */
+html[data-theme="dark"] {
+  --cream: #14120d;
+  --card: #1d1a14;
+  --card-bg: #1d1a14;
+  --dark: #f2ede0;
+  --mid: #c9c1b0;
+  --soft: #8f8570;
+  --border: #33291c;
+  --yellow-light: rgba(253, 224, 71, 0.1);
+  --yellow-dark: #f5c518;
+}
+
+html[data-theme="dark"] .badge-usa { background: rgba(59, 130, 246, 0.18); color: #93c5fd; }
+html[data-theme="dark"] .profile-badge,
+html[data-theme="dark"] .status-pill { background: rgba(16, 185, 129, 0.16); color: #6ee7b7; }
+html[data-theme="dark"] .avail-row span:last-child { color: #6ee7b7; }
+html[data-theme="dark"] .form-control,
+html[data-theme="dark"] .form-select { background: #201c15; color: var(--dark); }
+html[data-theme="dark"] .form-control:focus,
+html[data-theme="dark"] .form-select:focus { background: #201c15; }
+html[data-theme="dark"] .form-control::placeholder {
+  color: #7a7262;
+  opacity: 1;
+}
+html[data-theme="dark"] .chip,
+html[data-theme="dark"] .tab-btn { background: #201c15; }
+
+/* Selected pills sit on a solid yellow fill — force dark text so it stays readable
+   regardless of how --dark is redefined for the rest of dark mode. */
+html[data-theme="dark"] .chip.active,
+html[data-theme="dark"] .tab-btn.active {
+  background: var(--yellow) !important;
+  border-color: var(--yellow-dark) !important;
+  color: #1c1917 !important;
+}
+html[data-theme="dark"] .cert-new {
+  background: var(--yellow) !important;
+  color: #1c1917 !important;
+}
+html[data-theme="dark"] .nav-cta,
+html[data-theme="dark"] .navbar-light .nav-link.nav-cta {
+  background: var(--yellow, #fde047) !important;
+  color: #1c1917 !important;
+}
+html[data-theme="dark"] .nav-cta:hover {
+  background: var(--yellow-mid, #f59e0b) !important;
+}
+html[data-theme="dark"] .info-icon { filter: brightness(0.82) saturate(0.9); }
+
+/* The navbar on custom-styled pages (about/skills/education/contact) hardcodes a
+   cream background with !important, independent of --cream — override explicitly. */
+html[data-theme="dark"] .navbar {
+  background: rgba(29, 26, 20, 0.92) !important;
+  border-bottom-color: var(--border);
+}
+
+/* .navbar-brand has no explicit color on these pages, so it falls back to
+   Bootstrap's default dark navbar-brand text — unreadable on a dark navbar. */
+html[data-theme="dark"] .navbar-brand {
+  color: var(--dark) !important;
+}
+
+/* ===============================
+   Plain Bootstrap pages
+   (index.html, work.html)
+================================ */
+html[data-theme="dark"] body {
+  background-color: #14120d;
+  color: #eae5d8;
+}
+html[data-theme="dark"] .navbar.bg-white {
+  background-color: #1d1a14 !important;
+  border-color: #33291c;
+}
+html[data-theme="dark"] .navbar-light .navbar-brand,
+html[data-theme="dark"] .navbar-light .nav-link {
+  color: #eae5d8 !important;
+}
+html[data-theme="dark"] .navbar-light .nav-link.active,
+html[data-theme="dark"] .navbar-light .nav-link:hover {
+  color: #fde047 !important;
+}
+html[data-theme="dark"] .home {
+  background: linear-gradient(120deg, rgba(255, 255, 255, 0.04), transparent);
+}
+html[data-theme="dark"] .bg-light { background-color: #1a170f !important; }
+html[data-theme="dark"] .card {
+  background-color: #1d1a14;
+  color: #eae5d8;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.45);
+}
+html[data-theme="dark"] .text-dark { color: #eae5d8 !important; }
+html[data-theme="dark"] .text-muted { color: #9c9384 !important; }
+html[data-theme="dark"] .social a { color: #eae5d8; }
+html[data-theme="dark"] .float-badge {
+  background: #1d1a14;
+  color: #eae5d8;
+  border-color: #33291c;
+}
+html[data-theme="dark"] .btn-outline-dark {
+  color: #eae5d8;
+  border-color: #eae5d8;
+}
+html[data-theme="dark"] .btn-outline-dark:hover {
+  background-color: #eae5d8;
+  color: #14120d;
+}
+html[data-theme="dark"] .project-img-placeholder {
+  background: linear-gradient(135deg, #201c15, #2a2418);
+}
+html[data-theme="dark"] .timeline-item { border-bottom-color: rgba(255, 255, 255, 0.08); }
+html[data-theme="dark"] footer { color: #9c9384; }
